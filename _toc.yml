@@ -1,0 +1,10 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: etl-for-llm-sales-messaging.md
+- file: codeswitching-corpus-mining.md
+- file: llm-reasoning-graphic-puzzles.md
+- file: multilingual-text-detox.md
