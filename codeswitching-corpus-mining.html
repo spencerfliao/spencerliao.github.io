@@ -1,0 +1,2278 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Mining Codeswitching Patterns in Bilingual Menus &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'codeswitching-corpus-mining';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Enhancing LLM Reasoning for Visual Tasks" href="llm-reasoning-graphic-puzzles.html" />
+    <link rel="prev" title="Scalable Data ETL for AI-Powered Messaging" href="etl-for-llm-sales-messaging.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="etl-for-llm-sales-messaging.html">Scalable Data ETL for AI-Powered Messaging</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Mining Codeswitching Patterns in Bilingual Menus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm-reasoning-graphic-puzzles.html">Enhancing LLM Reasoning for Visual Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multilingual-text-detox.html">Multilingual Text Detoxification</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fcodeswitching-corpus-mining.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/codeswitching-corpus-mining.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Mining Codeswitching Patterns in Bilingual Menus</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#team-members">👥 Team Members</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-leads-ubc-linguistics">🎓 Project Leads (UBC Linguistics)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-overview">📘 Project Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning-and-pre-processing">Data cleaning and pre-processing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenization-for-now-we-process-and-tokenize-the-english-like-text-only">Tokenization: For now, we process and tokenize the english-like text only.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis">Exploratory Data Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#n-grams">N-grams</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#export-word-counters">Export word counters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keyword-search">Keyword search</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="mining-codeswitching-patterns-in-bilingual-menus">
+<h1>Mining Codeswitching Patterns in Bilingual Menus<a class="headerlink" href="#mining-codeswitching-patterns-in-bilingual-menus" title="Link to this heading">#</a></h1>
+<p><strong>Speech in Context Lab — UBC Department of Linguistics</strong></p>
+<hr class="docutils" />
+<section id="team-members">
+<h2>👥 Team Members<a class="headerlink" href="#team-members" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Spencer Liao</p></li>
+<li><p>Minh Nguyen</p></li>
+<li><p>Desmond Bai</p></li>
+</ul>
+</section>
+<section id="project-leads-ubc-linguistics">
+<h2>🎓 Project Leads (UBC Linguistics)<a class="headerlink" href="#project-leads-ubc-linguistics" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Prof. Molly Babel</p></li>
+<li><p>Chenxi Xu</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+<section id="project-overview">
+<h2>📘 Project Overview<a class="headerlink" href="#project-overview" title="Link to this heading">#</a></h2>
+<p>This project explores patterns of <strong>codeswitching</strong> in bilingual menus, with a focus on how Chinese and Western restaurants use language to present food items.</p>
+<p>We:</p>
+<ul class="simple">
+<li><p>Collected menus from both <strong>Chinese</strong> and <strong>Western</strong> restaurant websites</p></li>
+<li><p>Extracted dish names in both <strong>Chinese</strong> and <strong>English</strong></p></li>
+<li><p>Compiled and cleaned the data into a structured corpus</p></li>
+<li><p>Built keyword search functions to quantify mentions of target items (e.g., “burger”, “milk tea”) across restaurant types</p></li>
+<li><p>Laid groundwork for further <strong>linguistic analysis</strong> of lexical borrowing, cultural framing, and semantic domains</p></li>
+</ul>
+<hr class="docutils" />
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># required libraries</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">wordcloud</span><span class="w"> </span><span class="kn">import</span> <span class="n">WordCloud</span><span class="p">,</span> <span class="n">STOPWORDS</span><span class="p">,</span> <span class="n">ImageColorGenerator</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">spacy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># read data from file</span>
+<span class="n">FILE_PATH</span> <span class="o">=</span> <span class="s2">&quot;./data/restaurant_raw_data.tsv&quot;</span> <span class="c1"># please change it to match where you store the data</span>
+
+<span class="n">vocab_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">FILE_PATH</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1">#remove rows with blank values in dish names</span>
+<span class="n">vocab_df</span> <span class="o">=</span> <span class="n">vocab_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;word_dish&#39;</span><span class="p">)</span>
+<span class="n">vocab_df</span><span class="p">[</span><span class="s1">&#39;ch_counterpart_if_any&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># vocab_df.head()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># get some basic information like number of rows, how many restaurants, etc</span>
+<span class="n">vocab_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 1384 entries, 0 to 1384
+Data columns (total 6 columns):
+ #   Column                 Non-Null Count  Dtype 
+---  ------                 --------------  ----- 
+ 0   word_dish              1384 non-null   object
+ 1   lang_en_ch             1384 non-null   object
+ 2   ch_counterpart_if_any  1384 non-null   object
+ 3   restaurant_name        1384 non-null   object
+ 4   restaurant_type_en_ch  1384 non-null   object
+ 5   website_url            1384 non-null   object
+dtypes: object(6)
+memory usage: 75.7+ KB
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vocab_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</pre></div>
+</div>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>word_dish</th>
+      <th>lang_en_ch</th>
+      <th>ch_counterpart_if_any</th>
+      <th>restaurant_name</th>
+      <th>restaurant_type_en_ch</th>
+      <th>website_url</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>1384</td>
+      <td>1384</td>
+      <td>1384</td>
+      <td>1384</td>
+      <td>1384</td>
+      <td>1384</td>
+    </tr>
+    <tr>
+      <th>unique</th>
+      <td>1339</td>
+      <td>2</td>
+      <td>143</td>
+      <td>34</td>
+      <td>2</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <th>top</th>
+      <td>Chili</td>
+      <td>en</td>
+      <td></td>
+      <td>Seaport City Restaurant</td>
+      <td>ch</td>
+      <td>https://swypepos.com/olo/en/seaportcity/001?t=...</td>
+    </tr>
+    <tr>
+      <th>freq</th>
+      <td>3</td>
+      <td>1335</td>
+      <td>1242</td>
+      <td>179</td>
+      <td>792</td>
+      <td>179</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vocab_df</span><span class="p">[</span><span class="s1">&#39;restaurant_type_en_ch&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>restaurant_type_en_ch
+ch    792
+en    592
+Name: count, dtype: int64
+</pre></div>
+</div>
+<p>We have about 416 rows for Chinese restaurants, and 93 rows for Western restaurant for the moment</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of unique restaurants =&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">vocab_df</span><span class="p">[</span><span class="s1">&#39;restaurant_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Restaurant list =</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">vocab_df</span><span class="p">[</span><span class="s1">&#39;restaurant_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Number of unique restaurants = 34
+Restaurant list =
+ [&#39;Lin Chinese Cuisine And Tea House&#39; &#39;Broadway Chinese Restaurant&#39;
+ &#39;Seaport City Seafood Restaurant&#39; &#39;Peaceful Restaurant&#39; &#39;Chinatown BBQ&#39;
+ &#39;Happy Noodle House&#39; &#39;Seaport City Restaurant&#39; &#39;Peaceful Express&#39;
+ &#39;New Sun Restaurant&#39; &#39;Jingle Bao&#39; &#39;Sun Sui Wah&#39; &#39;Jollibee&#39;
+ &#39;Bin 4 Burger Lounge&#39; &#39;The Ellis&#39; &#39;Fable Kitchen&#39; &#39;Nook&#39;
+ &#39;Casereccio Foods&#39; &#39;Novo Italian&#39; &#39;Giardino&#39; &quot;Dave &amp; Mel&#39;s Pizzeria&quot;
+ &#39;Beach Ave Bar And Grill&#39; &#39;Burger Crush&#39; &#39;España Restaurant&#39; &#39;Alibi Room&#39;
+ &#39;Chambar&#39; &#39;Meat &amp; Bread&#39; &#39;Super Smash Burgers&#39; &#39;JOEY Burrard&#39; &#39;Lupo&#39;
+ &#39;The Flying Pig&#39; &#39;Ask For Luigi&#39; &#39;Osteria Savio Volpe&#39;
+ &#39;Tap &amp; Barrel - Bridges&#39; &#39;Robba Da Matti&#39;]
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">western_restaurants</span> <span class="o">=</span> <span class="n">vocab_df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;restaurant_type_en_ch == &#39;en&#39;&quot;</span><span class="p">)[</span><span class="s2">&quot;restaurant_name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of unique Western restaurants = &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">western_restaurants</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Names =</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">western_restaurants</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Number of unique Western restaurants =  23
+Names =
+ [&#39;Jollibee&#39; &#39;Bin 4 Burger Lounge&#39; &#39;The Ellis&#39; &#39;Fable Kitchen&#39; &#39;Nook&#39;
+ &#39;Casereccio Foods&#39; &#39;Novo Italian&#39; &#39;Giardino&#39; &quot;Dave &amp; Mel&#39;s Pizzeria&quot;
+ &#39;Beach Ave Bar And Grill&#39; &#39;Burger Crush&#39; &#39;España Restaurant&#39; &#39;Alibi Room&#39;
+ &#39;Chambar&#39; &#39;Meat &amp; Bread&#39; &#39;Super Smash Burgers&#39; &#39;JOEY Burrard&#39; &#39;Lupo&#39;
+ &#39;The Flying Pig&#39; &#39;Ask For Luigi&#39; &#39;Osteria Savio Volpe&#39;
+ &#39;Tap &amp; Barrel - Bridges&#39; &#39;Robba Da Matti&#39;]
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">western_restaurants</span> <span class="o">=</span> <span class="n">vocab_df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;restaurant_type_en_ch == &#39;ch&#39;&quot;</span><span class="p">)[</span><span class="s2">&quot;restaurant_name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of unique Chinese restaurants = &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">western_restaurants</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Names =</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">western_restaurants</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Number of unique Chinese restaurants =  11
+Names =
+ [&#39;Lin Chinese Cuisine And Tea House&#39; &#39;Broadway Chinese Restaurant&#39;
+ &#39;Seaport City Seafood Restaurant&#39; &#39;Peaceful Restaurant&#39; &#39;Chinatown BBQ&#39;
+ &#39;Happy Noodle House&#39; &#39;Seaport City Restaurant&#39; &#39;Peaceful Express&#39;
+ &#39;New Sun Restaurant&#39; &#39;Jingle Bao&#39; &#39;Sun Sui Wah&#39;]
+</pre></div>
+</div>
+</section>
+<section id="data-cleaning-and-pre-processing">
+<h2>Data cleaning and pre-processing<a class="headerlink" href="#data-cleaning-and-pre-processing" title="Link to this heading">#</a></h2>
+<p>We can convert the dish names into lower cases, to search more easily</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># initialize Spacy for tokenization</span>
+<span class="c1"># !python -m spacy download zh_core_web_sm # install zh_core_web_sm for Chinese tokenization</span>
+<span class="n">spacy_nlp_en</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;en_core_web_sm&quot;</span><span class="p">)</span>
+<span class="n">spacy_nlp_ch</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;zh_core_web_sm&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="tokenization-for-now-we-process-and-tokenize-the-english-like-text-only">
+<h3>Tokenization: For now, we process and tokenize the english-like text only.<a class="headerlink" href="#tokenization-for-now-we-process-and-tokenize-the-english-like-text-only" title="Link to this heading">#</a></h3>
+<p>For Chinese text, we will need to apply a different method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">doc</span> <span class="o">=</span> <span class="n">spacy_nlp_en</span><span class="p">(</span><span class="s2">&quot;cheese burger&quot;</span><span class="p">)</span>  
+<span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="c1"># should be &quot;cheese&quot;, then &quot;burger&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cheese
+burger
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">doc</span> <span class="o">=</span> <span class="n">spacy_nlp_ch</span><span class="p">(</span><span class="s2">&quot;珍珠奶茶&quot;</span><span class="p">)</span>  <span class="c1"># &quot;pearl milk tea&quot;</span>
+<span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="c1"># should be &quot;pearl&quot;, then &quot;milk tea&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>珍珠
+奶茶
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">spacy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">jieba</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">spacy.util</span><span class="w"> </span><span class="kn">import</span> <span class="n">compile_infix_regex</span>
+
+<span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;en_core_web_sm&quot;</span><span class="p">)</span>
+
+<span class="n">infixes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nlp</span><span class="o">.</span><span class="n">Defaults</span><span class="o">.</span><span class="n">infixes</span><span class="p">)</span>
+<span class="n">infixes</span> <span class="o">=</span> <span class="p">[</span><span class="n">pattern</span> <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">infixes</span> <span class="k">if</span> <span class="n">pattern</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;\.&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\&#39;&quot;</span><span class="p">]]</span>
+<span class="n">infix_re</span> <span class="o">=</span> <span class="n">compile_infix_regex</span><span class="p">(</span><span class="n">infixes</span><span class="p">)</span>
+<span class="n">nlp</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">infix_finditer</span> <span class="o">=</span> <span class="n">infix_re</span><span class="o">.</span><span class="n">finditer</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">tokenize_text</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">tokenizer</span><span class="o">=</span><span class="s1">&#39;spacy&#39;</span><span class="p">,</span> <span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy_nlp_en</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Tokenize text into smaller tokens using either SpaCy or Jieba, with an option to specify SpaCy model.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    - text: str, the text to tokenize.</span>
+<span class="sd">    - tokenizer: str, the tokenizer to use (&#39;spacy&#39; or &#39;jieba&#39;).</span>
+<span class="sd">    - spacy_model: str, the SpaCy language model to use (e.g., &#39;en_core_web_sm&#39;, &#39;zh_core_web_sm&#39;).</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    - tokens: list of str, the tokenized text.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    
+    <span class="k">if</span> <span class="n">tokenizer</span> <span class="o">==</span> <span class="s1">&#39;spacy&#39;</span><span class="p">:</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">token</span><span class="o">.</span><span class="n">lemma_</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">nlp</span><span class="p">(</span><span class="n">text</span><span class="p">)]</span>
+    <span class="k">elif</span> <span class="n">tokenizer</span> <span class="o">==</span> <span class="s1">&#39;jieba&#39;</span><span class="p">:</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">cut_all</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unsupported tokenizer. Please use &#39;spacy&#39; or &#39;jieba&#39;.&quot;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">tokens</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tokenize_text</span><span class="p">(</span><span class="s2">&quot;Trying the newest tataki-style b.b.q. ribs or xi&#39;an good noodles at Mel&#39;s place.&quot;</span><span class="p">,</span><span class="n">tokenizer</span><span class="o">=</span><span class="s2">&quot;spacy&quot;</span><span class="p">,</span> <span class="n">nlp</span><span class="o">=</span><span class="n">spacy_nlp_en</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;try&#39;, &#39;the&#39;, &#39;new&#39;, &#39;tataki&#39;, &#39;-&#39;, &#39;style&#39;, &#39;b.b.q&#39;, &#39;.&#39;, &#39;rib&#39;, &#39;or&#39;, &quot;xi&#39;an&quot;, &#39;good&#39;, &#39;noodle&#39;, &#39;at&#39;, &#39;mel&#39;, &quot;&#39;s&quot;, &#39;place&#39;, &#39;.&#39;]
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tokenize_text</span><span class="p">(</span><span class="s2">&quot;B.B.Q.Pork Chop SueyB.B.Q. Pork or Chicken Egg steamed rice&quot;</span><span class="p">,</span><span class="n">tokenizer</span><span class="o">=</span><span class="s2">&quot;spacy&quot;</span><span class="p">,</span> <span class="n">nlp</span><span class="o">=</span><span class="n">spacy_nlp_en</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;b.b.q.pork&#39;, &#39;chop&#39;, &#39;sueyb.b.q&#39;, &#39;.&#39;, &#39;pork&#39;, &#39;or&#39;, &#39;chicken&#39;, &#39;egg&#39;, &#39;steam&#39;, &#39;rice&#39;]
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">token</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">spacy_nlp_en</span><span class="p">(</span><span class="s2">&quot;tan tan noodles and steamed rice&quot;</span><span class="p">)]</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[tan, tan, noodles, and, steamed, rice]
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">check</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">:</span>
+        <span class="c1"># Check if the token is a noun and plural</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="s1">&#39;: &#39;</span><span class="p">,</span> <span class="n">token</span><span class="o">.</span><span class="n">tag_</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;tan tan noodles and steamed rice&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>tan :  NNP
+tan :  NNP
+noodles :  NNP
+and :  CC
+steamed :  JJ
+rice :  NN
+None
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">inflect</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">inflect</span><span class="o">.</span><span class="n">engine</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">to_singular</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="n">singular_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">engine</span><span class="o">.</span><span class="n">singular_noun</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="ow">or</span> <span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">]</span>
+    <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">singular_words</span><span class="p">)</span>
+
+<span class="c1"># Example usage</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;The cars are running on the roads with tan tan noodles and steamed noodles&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">to_singular</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The car are running on the road with tan tan noodle and steamed noodle
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vocab_df</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</pre></div>
+</div>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>word_dish</th>
+      <th>lang_en_ch</th>
+      <th>ch_counterpart_if_any</th>
+      <th>restaurant_name</th>
+      <th>restaurant_type_en_ch</th>
+      <th>website_url</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Xiao Long Bao</td>
+      <td>en</td>
+      <td></td>
+      <td>Lin Chinese Cuisine And Tea House</td>
+      <td>ch</td>
+      <td>https://www.yelp.com/biz/lin-chinese-cuisine-a...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Hot &amp; Sour Soup</td>
+      <td>en</td>
+      <td></td>
+      <td>Lin Chinese Cuisine And Tea House</td>
+      <td>ch</td>
+      <td>https://www.yelp.com/biz/lin-chinese-cuisine-a...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Honey Prawns</td>
+      <td>en</td>
+      <td></td>
+      <td>Lin Chinese Cuisine And Tea House</td>
+      <td>ch</td>
+      <td>https://www.yelp.com/biz/lin-chinese-cuisine-a...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Pan Fried Pork Buns</td>
+      <td>en</td>
+      <td></td>
+      <td>Lin Chinese Cuisine And Tea House</td>
+      <td>ch</td>
+      <td>https://www.yelp.com/biz/lin-chinese-cuisine-a...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Tan Tan Noodles</td>
+      <td>en</td>
+      <td></td>
+      <td>Lin Chinese Cuisine And Tea House</td>
+      <td>ch</td>
+      <td>https://www.yelp.com/biz/lin-chinese-cuisine-a...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1380</th>
+      <td>2 DESSERTS OF YOUR CHOICE</td>
+      <td>en</td>
+      <td></td>
+      <td>Robba Da Matti</td>
+      <td>en</td>
+      <td>https://robbadamatti.com/west-end/</td>
+    </tr>
+    <tr>
+      <th>1381</th>
+      <td>1 BOTTLE OF NESPOLINO SAN GIOVESE OR 1BOTTLE O...</td>
+      <td>en</td>
+      <td></td>
+      <td>Robba Da Matti</td>
+      <td>en</td>
+      <td>https://robbadamatti.com/west-end/</td>
+    </tr>
+    <tr>
+      <th>1382</th>
+      <td>HOME-MADE TIRAMISU’ 10</td>
+      <td>en</td>
+      <td></td>
+      <td>Robba Da Matti</td>
+      <td>en</td>
+      <td>https://robbadamatti.com/west-end/</td>
+    </tr>
+    <tr>
+      <th>1383</th>
+      <td>HOME-MADE PANNA COTTA WITH FOREST FRUIT COULIES 8</td>
+      <td>en</td>
+      <td></td>
+      <td>Robba Da Matti</td>
+      <td>en</td>
+      <td>https://robbadamatti.com/west-end/</td>
+    </tr>
+    <tr>
+      <th>1384</th>
+      <td>BUDINO AL CIOCCOLATO 10</td>
+      <td>en</td>
+      <td></td>
+      <td>Robba Da Matti</td>
+      <td>en</td>
+      <td>https://robbadamatti.com/west-end/</td>
+    </tr>
+  </tbody>
+</table>
+<p>1384 rows × 6 columns</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#lower-case `word-dish` to a new column `text`</span>
+<span class="n">vocab_df</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vocab_df</span><span class="p">[</span><span class="s1">&#39;word_dish&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+
+<span class="c1">#tokenize english dishnames, assigning to new column `tokens_en`</span>
+<span class="n">vocab_df</span><span class="p">[</span><span class="s1">&#39;tokens_en&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vocab_df</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">text</span><span class="p">:</span> <span class="n">tokenize_text</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">tokenizer</span><span class="o">=</span><span class="s2">&quot;spacy&quot;</span><span class="p">,</span>
+                               <span class="n">nlp</span><span class="o">=</span><span class="n">spacy_nlp_en</span><span class="p">))</span>
+
+<span class="c1">#tokenize chinese dishnames, assigning to new column `tokens_ch`</span>
+<span class="n">vocab_df</span><span class="p">[</span><span class="s2">&quot;tokens_ch&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vocab_df</span><span class="p">[</span><span class="s1">&#39;ch_counterpart_if_any&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">text</span><span class="p">:</span> <span class="n">tokenize_text</span><span class="p">(</span><span class="n">text</span><span class="p">,</span>
+                               <span class="n">tokenizer</span><span class="o">=</span><span class="s2">&quot;jieba&quot;</span><span class="p">))</span>
+
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Building prefix dict from the default dictionary ...
+Loading model from cache /var/folders/70/jbxy_yf117gcpy6js8x0wxjc0000gn/T/jieba.cache
+Loading model cost 0.848 seconds.
+Prefix dict has been built successfully.
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#checking first few rows of resulting dataframe</span>
+<span class="n">vocab_df</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</pre></div>
+</div>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>word_dish</th>
+      <th>lang_en_ch</th>
+      <th>ch_counterpart_if_any</th>
+      <th>restaurant_name</th>
+      <th>restaurant_type_en_ch</th>
+      <th>website_url</th>
+      <th>text</th>
+      <th>tokens_en</th>
+      <th>tokens_ch</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Xiao Long Bao</td>
+      <td>en</td>
+      <td></td>
+      <td>Lin Chinese Cuisine And Tea House</td>
+      <td>ch</td>
+      <td>https://www.yelp.com/biz/lin-chinese-cuisine-a...</td>
+      <td>xiao long bao</td>
+      <td>[xiao, long, bao]</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Hot &amp; Sour Soup</td>
+      <td>en</td>
+      <td></td>
+      <td>Lin Chinese Cuisine And Tea House</td>
+      <td>ch</td>
+      <td>https://www.yelp.com/biz/lin-chinese-cuisine-a...</td>
+      <td>hot &amp; sour soup</td>
+      <td>[hot, &amp;, sour, soup]</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Honey Prawns</td>
+      <td>en</td>
+      <td></td>
+      <td>Lin Chinese Cuisine And Tea House</td>
+      <td>ch</td>
+      <td>https://www.yelp.com/biz/lin-chinese-cuisine-a...</td>
+      <td>honey prawns</td>
+      <td>[honey, prawn]</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Pan Fried Pork Buns</td>
+      <td>en</td>
+      <td></td>
+      <td>Lin Chinese Cuisine And Tea House</td>
+      <td>ch</td>
+      <td>https://www.yelp.com/biz/lin-chinese-cuisine-a...</td>
+      <td>pan fried pork buns</td>
+      <td>[pan, fry, pork, bun]</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Tan Tan Noodles</td>
+      <td>en</td>
+      <td></td>
+      <td>Lin Chinese Cuisine And Tea House</td>
+      <td>ch</td>
+      <td>https://www.yelp.com/biz/lin-chinese-cuisine-a...</td>
+      <td>tan tan noodles</td>
+      <td>[tan, tan, noodles]</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1380</th>
+      <td>2 DESSERTS OF YOUR CHOICE</td>
+      <td>en</td>
+      <td></td>
+      <td>Robba Da Matti</td>
+      <td>en</td>
+      <td>https://robbadamatti.com/west-end/</td>
+      <td>2 desserts of your choice</td>
+      <td>[2, dessert, of, your, choice]</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>1381</th>
+      <td>1 BOTTLE OF NESPOLINO SAN GIOVESE OR 1BOTTLE O...</td>
+      <td>en</td>
+      <td></td>
+      <td>Robba Da Matti</td>
+      <td>en</td>
+      <td>https://robbadamatti.com/west-end/</td>
+      <td>1 bottle of nespolino san giovese or 1bottle o...</td>
+      <td>[1, bottle, of, nespolino, san, giovese, or, 1...</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>1382</th>
+      <td>HOME-MADE TIRAMISU’ 10</td>
+      <td>en</td>
+      <td></td>
+      <td>Robba Da Matti</td>
+      <td>en</td>
+      <td>https://robbadamatti.com/west-end/</td>
+      <td>home-made tiramisu’ 10</td>
+      <td>[home, -, make, tiramisu, ', 10]</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>1383</th>
+      <td>HOME-MADE PANNA COTTA WITH FOREST FRUIT COULIES 8</td>
+      <td>en</td>
+      <td></td>
+      <td>Robba Da Matti</td>
+      <td>en</td>
+      <td>https://robbadamatti.com/west-end/</td>
+      <td>home-made panna cotta with forest fruit coulies 8</td>
+      <td>[home, -, make, panna, cotta, with, forest, fr...</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>1384</th>
+      <td>BUDINO AL CIOCCOLATO 10</td>
+      <td>en</td>
+      <td></td>
+      <td>Robba Da Matti</td>
+      <td>en</td>
+      <td>https://robbadamatti.com/west-end/</td>
+      <td>budino al cioccolato 10</td>
+      <td>[budino, al, cioccolato, 10]</td>
+      <td>[]</td>
+    </tr>
+  </tbody>
+</table>
+<p>1384 rows × 9 columns</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#checking rows with non-empty entry for chinese dishnames</span>
+<span class="n">vocab_df</span><span class="p">[</span><span class="n">vocab_df</span><span class="p">[</span><span class="s1">&#39;tokens_ch&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">!=</span> <span class="p">[])]</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</pre></div>
+</div>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>word_dish</th>
+      <th>lang_en_ch</th>
+      <th>ch_counterpart_if_any</th>
+      <th>restaurant_name</th>
+      <th>restaurant_type_en_ch</th>
+      <th>website_url</th>
+      <th>text</th>
+      <th>tokens_en</th>
+      <th>tokens_ch</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>64</th>
+      <td>Vegetables Fried Rice</td>
+      <td>en + ch</td>
+      <td>素炒飯</td>
+      <td>Chinatown BBQ</td>
+      <td>ch</td>
+      <td>https://www.skipthedishes.com/chinatown-bbq-pe...</td>
+      <td>vegetables fried rice</td>
+      <td>[vegetable, fry, rice]</td>
+      <td>[素, 炒, 飯]</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>BBQ Pork Fried Rice</td>
+      <td>en + ch</td>
+      <td>叉燒炒飯</td>
+      <td>Chinatown BBQ</td>
+      <td>ch</td>
+      <td>https://www.skipthedishes.com/chinatown-bbq-pe...</td>
+      <td>bbq pork fried rice</td>
+      <td>[bbq, pork, fry, rice]</td>
+      <td>[叉燒, 炒, 飯]</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>BBQ Duck Noodle soup</td>
+      <td>en + ch</td>
+      <td>燒鴨瀨粉</td>
+      <td>Chinatown BBQ</td>
+      <td>ch</td>
+      <td>https://www.skipthedishes.com/chinatown-bbq-pe...</td>
+      <td>bbq duck noodle soup</td>
+      <td>[bbq, duck, noodle, soup]</td>
+      <td>[燒鴨瀨粉]</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>BBQ Duck on Steamed Rice</td>
+      <td>en + ch</td>
+      <td>掛爐燒鴨飯</td>
+      <td>Chinatown BBQ</td>
+      <td>ch</td>
+      <td>https://www.skipthedishes.com/chinatown-bbq-pe...</td>
+      <td>bbq duck on steamed rice</td>
+      <td>[bbq, duck, on, steam, rice]</td>
+      <td>[掛爐, 燒鴨飯]</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>BBQ Duck &amp; Soy Chicken Noodle</td>
+      <td>en + ch</td>
+      <td>燒鴨油雞瀨粉</td>
+      <td>Chinatown BBQ</td>
+      <td>ch</td>
+      <td>https://www.skipthedishes.com/chinatown-bbq-pe...</td>
+      <td>bbq duck &amp; soy chicken noodle</td>
+      <td>[bbq, duck, &amp;, soy, chicken, noodle]</td>
+      <td>[燒鴨油, 雞瀨粉]</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>504</th>
+      <td>Add Side Noodle</td>
+      <td>en</td>
+      <td>加面</td>
+      <td>Peaceful Express</td>
+      <td>ch</td>
+      <td>https://www.peacefulrestaurant.com/shop/Burnab...</td>
+      <td>add side noodle</td>
+      <td>[add, side, noodle]</td>
+      <td>[加面]</td>
+    </tr>
+    <tr>
+      <th>505</th>
+      <td>Sizzled Hot-Chilli Noodles</td>
+      <td>en</td>
+      <td>油潑辣子面</td>
+      <td>Peaceful Express</td>
+      <td>ch</td>
+      <td>https://www.peacefulrestaurant.com/shop/Burnab...</td>
+      <td>sizzled hot-chilli noodles</td>
+      <td>[sizzle, hot, -, chilli, noodle]</td>
+      <td>[油潑, 辣子, 面]</td>
+    </tr>
+    <tr>
+      <th>506</th>
+      <td>Xi'an Cold Noodles l</td>
+      <td>en</td>
+      <td>凉拌面</td>
+      <td>Peaceful Express</td>
+      <td>ch</td>
+      <td>https://www.peacefulrestaurant.com/shop/Burnab...</td>
+      <td>xi'an cold noodles l</td>
+      <td>[xi'an, cold, noodles, l]</td>
+      <td>[凉拌面]</td>
+    </tr>
+    <tr>
+      <th>507</th>
+      <td>Beijing Pork Sauce Noodles</td>
+      <td>en</td>
+      <td>炸醬面</td>
+      <td>Peaceful Express</td>
+      <td>ch</td>
+      <td>https://www.peacefulrestaurant.com/shop/Burnab...</td>
+      <td>beijing pork sauce noodles</td>
+      <td>[beijing, pork, sauce, noodle]</td>
+      <td>[炸醬面]</td>
+    </tr>
+    <tr>
+      <th>508</th>
+      <td>Tangy Tomato &amp; Egg Noodles</td>
+      <td>en</td>
+      <td>西紅柿蛋面</td>
+      <td>Peaceful Express</td>
+      <td>ch</td>
+      <td>https://www.peacefulrestaurant.com/shop/Burnab...</td>
+      <td>tangy tomato &amp; egg noodles</td>
+      <td>[tangy, tomato, &amp;, egg, noodle]</td>
+      <td>[西紅柿, 蛋面]</td>
+    </tr>
+  </tbody>
+</table>
+<p>142 rows × 9 columns</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">spacy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">jieba</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">spacy.util</span><span class="w"> </span><span class="kn">import</span> <span class="n">compile_infix_regex</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">inflect</span>
+
+<span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;en_core_web_sm&quot;</span><span class="p">)</span>
+
+<span class="n">infixes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nlp</span><span class="o">.</span><span class="n">Defaults</span><span class="o">.</span><span class="n">infixes</span><span class="p">)</span>
+<span class="n">infixes</span> <span class="o">=</span> <span class="p">[</span><span class="n">pattern</span> <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">infixes</span> <span class="k">if</span> <span class="n">pattern</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;\.&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\&#39;&quot;</span><span class="p">]]</span>
+<span class="n">infix_re</span> <span class="o">=</span> <span class="n">compile_infix_regex</span><span class="p">(</span><span class="n">infixes</span><span class="p">)</span>
+<span class="n">nlp</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">infix_finditer</span> <span class="o">=</span> <span class="n">infix_re</span><span class="o">.</span><span class="n">finditer</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">inflect</span><span class="o">.</span><span class="n">engine</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">lemmatize_and_singularize</span><span class="p">(</span><span class="n">token</span><span class="p">):</span>
+    <span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+    <span class="n">lemma</span> <span class="o">=</span> <span class="n">doc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lemma_</span>
+    <span class="n">singular_word</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">singular_noun</span><span class="p">(</span><span class="n">lemma</span><span class="p">)</span> <span class="ow">or</span> <span class="n">lemma</span>
+    <span class="k">return</span> <span class="n">singular_word</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">process_tokens</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">lemmatize_and_singularize</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">]</span>
+
+<span class="n">vocab_df</span><span class="p">[</span><span class="s1">&#39;processed_tokens&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vocab_df</span><span class="p">[</span><span class="s1">&#39;tokens_en&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">process_tokens</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vocab_df</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</pre></div>
+</div>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>word_dish</th>
+      <th>lang_en_ch</th>
+      <th>ch_counterpart_if_any</th>
+      <th>restaurant_name</th>
+      <th>restaurant_type_en_ch</th>
+      <th>website_url</th>
+      <th>text</th>
+      <th>tokens_en</th>
+      <th>tokens_ch</th>
+      <th>processed_tokens</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Xiao Long Bao</td>
+      <td>en</td>
+      <td></td>
+      <td>Lin Chinese Cuisine And Tea House</td>
+      <td>ch</td>
+      <td>https://www.yelp.com/biz/lin-chinese-cuisine-a...</td>
+      <td>xiao long bao</td>
+      <td>[xiao, long, bao]</td>
+      <td>[]</td>
+      <td>[xiao, long, bao]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Hot &amp; Sour Soup</td>
+      <td>en</td>
+      <td></td>
+      <td>Lin Chinese Cuisine And Tea House</td>
+      <td>ch</td>
+      <td>https://www.yelp.com/biz/lin-chinese-cuisine-a...</td>
+      <td>hot &amp; sour soup</td>
+      <td>[hot, &amp;, sour, soup]</td>
+      <td>[]</td>
+      <td>[hot, &amp;, sour, soup]</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Honey Prawns</td>
+      <td>en</td>
+      <td></td>
+      <td>Lin Chinese Cuisine And Tea House</td>
+      <td>ch</td>
+      <td>https://www.yelp.com/biz/lin-chinese-cuisine-a...</td>
+      <td>honey prawns</td>
+      <td>[honey, prawn]</td>
+      <td>[]</td>
+      <td>[honey, prawn]</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Pan Fried Pork Buns</td>
+      <td>en</td>
+      <td></td>
+      <td>Lin Chinese Cuisine And Tea House</td>
+      <td>ch</td>
+      <td>https://www.yelp.com/biz/lin-chinese-cuisine-a...</td>
+      <td>pan fried pork buns</td>
+      <td>[pan, fry, pork, bun]</td>
+      <td>[]</td>
+      <td>[pan, fry, pork, bun]</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Tan Tan Noodles</td>
+      <td>en</td>
+      <td></td>
+      <td>Lin Chinese Cuisine And Tea House</td>
+      <td>ch</td>
+      <td>https://www.yelp.com/biz/lin-chinese-cuisine-a...</td>
+      <td>tan tan noodles</td>
+      <td>[tan, tan, noodles]</td>
+      <td>[]</td>
+      <td>[tan, tan, noodle]</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1380</th>
+      <td>2 DESSERTS OF YOUR CHOICE</td>
+      <td>en</td>
+      <td></td>
+      <td>Robba Da Matti</td>
+      <td>en</td>
+      <td>https://robbadamatti.com/west-end/</td>
+      <td>2 desserts of your choice</td>
+      <td>[2, dessert, of, your, choice]</td>
+      <td>[]</td>
+      <td>[2, dessert, of, your, choice]</td>
+    </tr>
+    <tr>
+      <th>1381</th>
+      <td>1 BOTTLE OF NESPOLINO SAN GIOVESE OR 1BOTTLE O...</td>
+      <td>en</td>
+      <td></td>
+      <td>Robba Da Matti</td>
+      <td>en</td>
+      <td>https://robbadamatti.com/west-end/</td>
+      <td>1 bottle of nespolino san giovese or 1bottle o...</td>
+      <td>[1, bottle, of, nespolino, san, giovese, or, 1...</td>
+      <td>[]</td>
+      <td>[1, bottle, of, nespolino, san, giovese, or, 1...</td>
+    </tr>
+    <tr>
+      <th>1382</th>
+      <td>HOME-MADE TIRAMISU’ 10</td>
+      <td>en</td>
+      <td></td>
+      <td>Robba Da Matti</td>
+      <td>en</td>
+      <td>https://robbadamatti.com/west-end/</td>
+      <td>home-made tiramisu’ 10</td>
+      <td>[home, -, make, tiramisu, ', 10]</td>
+      <td>[]</td>
+      <td>[home, -, make, tiramisu, ', 10]</td>
+    </tr>
+    <tr>
+      <th>1383</th>
+      <td>HOME-MADE PANNA COTTA WITH FOREST FRUIT COULIES 8</td>
+      <td>en</td>
+      <td></td>
+      <td>Robba Da Matti</td>
+      <td>en</td>
+      <td>https://robbadamatti.com/west-end/</td>
+      <td>home-made panna cotta with forest fruit coulies 8</td>
+      <td>[home, -, make, panna, cotta, with, forest, fr...</td>
+      <td>[]</td>
+      <td>[home, -, make, panna, cotta, with, forest, fr...</td>
+    </tr>
+    <tr>
+      <th>1384</th>
+      <td>BUDINO AL CIOCCOLATO 10</td>
+      <td>en</td>
+      <td></td>
+      <td>Robba Da Matti</td>
+      <td>en</td>
+      <td>https://robbadamatti.com/west-end/</td>
+      <td>budino al cioccolato 10</td>
+      <td>[budino, al, cioccolato, 10]</td>
+      <td>[]</td>
+      <td>[budino, al, cioccolato, 10]</td>
+    </tr>
+  </tbody>
+</table>
+<p>1384 rows × 10 columns</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vocab_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;tokenized_food_vocab.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="exploratory-data-analysis">
+<h2>Exploratory Data Analysis<a class="headerlink" href="#exploratory-data-analysis" title="Link to this heading">#</a></h2>
+<p>We can create word clouds to see which words are frequent in each restaurant category</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">nltk.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">stopwords</span> 
+<span class="n">stopwords_en</span> <span class="o">=</span> <span class="n">stopwords_en</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s2">&quot;english&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_word_cloud</span><span class="p">(</span><span class="n">restaurant_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">vocab_df</span><span class="p">,</span> <span class="n">show_image</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text_col</span><span class="o">=</span><span class="s2">&quot;tokens_en&quot;</span><span class="p">,</span> <span class="n">top_n</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create wordcloud to see which dish names appear frequently</span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            restaurant_type: &quot;ch&quot; or &quot;en&quot;. None to create wordcloud in general</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">restaurant_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;restaurant_type_en_ch == @restaurant_type&quot;</span><span class="p">)[</span><span class="n">text_col</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">text_col</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Text counts = &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+    <span class="c1"># print(text[0])</span>
+    <span class="c1"># print(type(text[0]))</span>
+    <span class="c1"># text = &quot; &quot;.join(text)</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="c1"># column data type is string -&gt; just join them</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">is</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="c1"># colum data type is list (of tokens) -&gt; combine then join</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+                         <span class="k">for</span> <span class="n">tokens</span> <span class="ow">in</span> <span class="n">text</span>
+                        <span class="p">])</span>
+    
+    <span class="n">wordcloud</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">()</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">show_image</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">wordcloud</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="n">w_counter</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span><span class="n">stopwords</span><span class="o">=</span><span class="n">stopwords_en</span><span class="p">)</span><span class="o">.</span><span class="n">process_text</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">w_counter</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span>
+                    <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                    <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">result</span><span class="p">[:</span><span class="n">top_n</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># make wordcloud across all restaurant types</span>
+<span class="n">word_counter</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+<span class="n">word_counter</span><span class="p">[</span><span class="s2">&quot;all&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">make_word_cloud</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word_counter</span><span class="p">[</span><span class="s2">&quot;all&quot;</span><span class="p">][:</span><span class="mi">10</span><span class="p">])</span> <span class="c1"># print top 10 words</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Text counts =  1384
+</pre></div>
+</div>
+<p><img alt="png" src="restaurant_vocab_main-trigrams_files/restaurant_vocab_main-trigrams_32_1.png" /></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[(&#39;beef&#39;, 128), (&#39;chicken&#39;, 126), (&#39;sauce&#39;, 96), (&#39;pork&#39;, 63), (&#39;spicy&#39;, 56), (&#39;prawn&#39;, 45), (&#39;garlic&#39;, 44), (&#39;soup&#39;, 43), (&#39;mushroom&#39;, 43), (&#39;noodle&#39;, 42)]
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># make wordcloud for Western restaurant</span>
+<span class="n">word_counter</span><span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">make_word_cloud</span><span class="p">(</span><span class="n">restaurant_type</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word_counter</span><span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">][:</span><span class="mi">10</span><span class="p">])</span> <span class="c1"># print top 10 words</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Text counts =  592
+</pre></div>
+</div>
+<p><img alt="png" src="restaurant_vocab_main-trigrams_files/restaurant_vocab_main-trigrams_33_1.png" /></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[(&#39;sauce&#39;, 42), (&#39;chicken&#39;, 37), (&#39;salad&#39;, 34), (&#39;burger&#39;, 32), (&#39;fry&#39;, 32), (&#39;crispy&#39;, 32), (&#39;grill&#39;, 29), (&#39;cheese&#39;, 27), (&#39;garlic&#39;, 25), (&#39;mushroom&#39;, 24)]
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># make wordcloud for Chinese restaurant</span>
+<span class="n">word_counter</span><span class="p">[</span><span class="s2">&quot;ch&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">make_word_cloud</span><span class="p">(</span><span class="n">restaurant_type</span><span class="o">=</span><span class="s2">&quot;ch&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word_counter</span><span class="p">[</span><span class="s2">&quot;ch&quot;</span><span class="p">][:</span><span class="mi">10</span><span class="p">])</span> <span class="c1"># print top 10 words</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Text counts =  792
+</pre></div>
+</div>
+<p><img alt="png" src="restaurant_vocab_main-trigrams_files/restaurant_vocab_main-trigrams_34_1.png" /></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[(&#39;beef&#39;, 111), (&#39;chicken&#39;, 104), (&#39;noodle&#39;, 66), (&#39;pork&#39;, 64), (&#39;sauce&#39;, 54), (&#39;rice&#39;, 41), (&#39;soup&#39;, 39), (&#39;spicy&#39;, 38), (&#39;chow mein&#39;, 37), (&#39;tofu&#39;, 34)]
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># make wordcloud for Chinese restaurant</span>
+<span class="n">word_counter</span><span class="p">[</span><span class="s2">&quot;ch_tokenized&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">make_word_cloud</span><span class="p">(</span><span class="n">restaurant_type</span><span class="o">=</span><span class="s2">&quot;ch&quot;</span><span class="p">,</span> <span class="n">show_image</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">text_col</span><span class="o">=</span><span class="s2">&quot;tokens_ch&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word_counter</span><span class="p">[</span><span class="s2">&quot;ch_tokenized&quot;</span><span class="p">][:</span><span class="mi">10</span><span class="p">])</span> <span class="c1"># print top 10 words</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Text counts =  792
+[(&#39;炒面&#39;, 10), (&#39;叉&#39;, 8), (&#39;雞&#39;, 8), (&#39;牛肉&#39;, 8), (&#39;飯&#39;, 7), (&#39;炒&#39;, 6), (&#39;雞瀨粉&#39;, 6), (&#39;燒肉&#39;, 4), (&#39;咖喱&#39;, 4), (&#39;上海&#39;, 4)]
+</pre></div>
+</div>
+</section>
+<section id="n-grams">
+<h2>N-grams<a class="headerlink" href="#n-grams" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">count_ngrams</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">vocab_df</span><span class="p">,</span> <span class="n">restaurant_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">text_col</span><span class="o">=</span><span class="s2">&quot;tokens_en&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">min_freq</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">generate_ngrams</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate n-grams from a list of cleaned tokens.&quot;&quot;&quot;</span>
+        <span class="n">cleaned_tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^\w\s]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cleaned_tokens</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">n</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cleaned_tokens</span><span class="p">)</span><span class="o">-</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+    
+    <span class="c1"># Initialize a counter to hold all n-grams</span>
+    <span class="n">ngram_counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+
+    <span class="c1"># Process each specified column</span>
+    <span class="k">if</span> <span class="n">restaurant_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;restaurant_type_en_ch == @restaurant_type&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">tokens_list</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="n">text_col</span><span class="p">]:</span>
+        <span class="c1"># Skip if not a list</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tokens_list</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="c1"># Generate and update counts for bigrams and trigrams</span>
+        <span class="n">cleaned_tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^\w\s]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens_list</span><span class="p">]</span>
+        <span class="n">ngrams</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cleaned_tokens</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">n</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cleaned_tokens</span><span class="p">)</span><span class="o">-</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+        <span class="n">ngram_counter</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">ngrams</span><span class="p">))</span>  <span class="c1"># filter out empty strings</span>
+
+    <span class="c1"># Filter n-grams by minimum frequency</span>
+    <span class="n">filtered_ngrams</span> <span class="o">=</span> <span class="p">[(</span><span class="n">ngram</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span> <span class="k">for</span> <span class="n">ngram</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">ngram_counter</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">count</span> <span class="o">&gt;=</span> <span class="n">min_freq</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">ngram</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="o">==</span> <span class="n">n</span><span class="p">]</span>
+
+    <span class="c1"># Sort by frequency (descending) and n-gram length (ascending, to place bigrams before trigrams)</span>
+    <span class="n">sorted_ngrams</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">filtered_ngrams</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">())))</span>
+
+    <span class="k">return</span> <span class="n">sorted_ngrams</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">unigrams</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">unigrams</span><span class="p">[</span><span class="s1">&#39;en&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">count_ngrams</span><span class="p">(</span><span class="n">restaurant_type</span><span class="o">=</span><span class="s1">&#39;en&#39;</span><span class="p">,</span> <span class="n">text_col</span><span class="o">=</span><span class="s2">&quot;tokens_en&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">unigrams</span><span class="p">[</span><span class="s1">&#39;ch_en&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">count_ngrams</span><span class="p">(</span><span class="n">restaurant_type</span><span class="o">=</span><span class="s1">&#39;ch&#39;</span><span class="p">,</span> <span class="n">text_col</span><span class="o">=</span><span class="s2">&quot;tokens_en&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">unigrams</span><span class="p">[</span><span class="s1">&#39;ch_ch&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">count_ngrams</span><span class="p">(</span><span class="n">restaurant_type</span><span class="o">=</span><span class="s1">&#39;ch&#39;</span><span class="p">,</span> <span class="n">text_col</span><span class="o">=</span><span class="s2">&quot;tokens_ch&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">unigrams</span><span class="p">[</span><span class="s1">&#39;ch_ch&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[(&#39;炒面&#39;, 10),
+ (&#39;叉&#39;, 8),
+ (&#39;雞&#39;, 8),
+ (&#39;牛肉&#39;, 8),
+ (&#39;飯&#39;, 7),
+ (&#39;炒&#39;, 6),
+ (&#39;雞瀨粉&#39;, 6),
+ (&#39;燒肉&#39;, 4),
+ (&#39;咖喱&#39;, 4),
+ (&#39;上海&#39;, 4),
+ (&#39;豆腐&#39;, 4),
+ (&#39;什菜&#39;, 4),
+ (&#39;叉燒&#39;, 3),
+ (&#39;脆皮&#39;, 3),
+ (&#39;蜜汁&#39;, 3),
+ (&#39;雞飯&#39;, 3),
+ (&#39;肉&#39;, 3),
+ (&#39;白切&#39;, 3),
+ (&#39;貴妃&#39;, 3),
+ (&#39;四川&#39;, 3),
+ (&#39;椒&#39;, 3),
+ (&#39;孜然&#39;, 3),
+ (&#39;鹽&#39;, 3),
+ (&#39;燒燒&#39;, 2),
+ (&#39;雙拼&#39;, 2),
+ (&#39;燻&#39;, 2),
+ (&#39;蹄&#39;, 2),
+ (&#39;鴨翼&#39;, 2),
+ (&#39;燒飯&#39;, 2),
+ (&#39;金牌&#39;, 2),
+ (&#39;燒油&#39;, 2),
+ (&#39;走&#39;, 2),
+ (&#39;豉油&#39;, 2),
+ (&#39;地&#39;, 2),
+ (&#39;牛腩&#39;, 2),
+ (&#39;橙汁&#39;, 2),
+ (&#39;蠔油&#39;, 2),
+ (&#39;芥蘭&#39;, 2),
+ (&#39;生菜&#39;, 2),
+ (&#39;白飯&#39;, 2),
+ (&#39;和平&#39;, 2),
+ (&#39;炒飯&#39;, 2),
+ (&#39;干&#39;, 2),
+ (&#39;煸&#39;, 2),
+ (&#39;菜&#39;, 2),
+ (&#39;酸辣&#39;, 2),
+ (&#39;羹&#39;, 2),
+ (&#39;海鮮&#39;, 2),
+ (&#39;片&#39;, 2),
+ (&#39;北方&#39;, 2),
+ (&#39;貼&#39;, 2),
+ (&#39;羊&#39;, 2),
+ (&#39;排骨&#39;, 2),
+ (&#39;蔥&#39;, 2),
+ (&#39;爆&#39;, 2),
+ (&#39;雞丁&#39;, 2),
+ (&#39;辣子&#39;, 2),
+ (&#39;四季豆&#39;, 2),
+ (&#39;蒜蓉&#39;, 2),
+ (&#39;面&#39;, 2),
+ (&#39;麵&#39;, 2),
+ (&#39;孜&#39;, 2)]
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bigrams</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">bigrams</span><span class="p">[</span><span class="s1">&#39;en&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">count_ngrams</span><span class="p">(</span><span class="n">restaurant_type</span><span class="o">=</span><span class="s1">&#39;en&#39;</span><span class="p">,</span> <span class="n">text_col</span><span class="o">=</span><span class="s2">&quot;tokens_en&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">min_freq</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">bigrams</span><span class="p">[</span><span class="s1">&#39;en&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[(&#39;ahi tuna&#39;, 10),
+ (&#39;wild mushroom&#39;, 9),
+ (&#39;7 oz&#39;, 9),
+ (&#39;brioche bun&#39;, 9),
+ (&#39;ice cream&#39;, 8),
+ (&#39;smash burger&#39;, 7),
+ (&#39;with our&#39;, 7),
+ (&#39;mash potato&#39;, 7),
+ (&#39;chicken sandwich&#39;, 6),
+ (&#39;grape tomato&#39;, 6),
+ (&#39;pumpkin seed&#39;, 6),
+ (&#39;fry chicken&#39;, 6),
+ (&#39;grana padano&#39;, 6),
+ (&#39;chicken breast&#39;, 6),
+ (&#39;roasted garlic&#39;, 6),
+ (&#39;pork belly&#39;, 5),
+ (&#39;poach egg&#39;, 5),
+ (&#39;beet salad&#39;, 5),
+ (&#39;white wine&#39;, 5),
+ (&#39;house salad&#39;, 5),
+ (&#39;grill chicken&#39;, 5),
+ (&#39;only at&#39;, 5),
+ (&#39;super smash&#39;, 5),
+ (&#39;on a&#39;, 5),
+ (&#39;with a&#39;, 5),
+ (&#39;onion ring&#39;, 5),
+ (&#39;your choice&#39;, 5),
+ (&#39;choice of&#39;, 5),
+ (&#39;cream and&#39;, 5),
+ (&#39;oz cab&#39;, 5),
+ (&#39;crispy onion&#39;, 5)]
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">trigrams</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">trigrams</span><span class="p">[</span><span class="s1">&#39;en&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">count_ngrams</span><span class="p">(</span><span class="n">restaurant_type</span><span class="o">=</span><span class="s1">&#39;en&#39;</span><span class="p">,</span> <span class="n">text_col</span><span class="o">=</span><span class="s2">&quot;tokens_en&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">min_freq</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">trigrams</span><span class="p">[</span><span class="s1">&#39;en&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[(&#39;super smash burger&#39;, 5),
+ (&#39;7 oz cab&#39;, 5),
+ (&#39;grill chicken breast&#39;, 4),
+ (&#39;available only at&#39;, 4),
+ (&#39;only at meet&#39;, 4),
+ (&#39;on a toast&#39;, 4),
+ (&#39;a toast potato&#39;, 4),
+ (&#39;toast potato bun&#39;, 4),
+ (&#39;crispy mash potato&#39;, 4),
+ (&#39;local wild mushroom&#39;, 4),
+ (&#39;mac n cheez&#39;, 3),
+ (&#39;a world of&#39;, 3),
+ (&#39;whip cream and&#39;, 3),
+ (&#39;jumbo lump crab&#39;, 3),
+ (&#39;lump crab cake&#39;, 3),
+ (&#39;truffle beurre blanc&#39;, 3),
+ (&#39;sear salmon sushi&#39;, 3),
+ (&#39;oz cab sirloin&#39;, 3),
+ (&#39;cab sirloin 425&#39;, 3),
+ (&#39;load crispy mash&#39;, 3),
+ (&#39;7 oz filet&#39;, 3),
+ (&#39;oz filet mignon&#39;, 3),
+ (&#39;mario s vanilla&#39;, 3),
+ (&#39;s vanilla bean&#39;, 3),
+ (&#39;vanilla bean gelato&#39;, 3),
+ (&#39;of your choice&#39;, 3)]
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bigrams</span><span class="p">[</span><span class="s1">&#39;ch&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">count_ngrams</span><span class="p">(</span><span class="n">restaurant_type</span><span class="o">=</span><span class="s1">&#39;ch&#39;</span><span class="p">,</span> <span class="n">text_col</span><span class="o">=</span><span class="s2">&quot;tokens_en&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">min_freq</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">bigrams</span><span class="p">[</span><span class="s1">&#39;ch&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[(&#39;chow mein&#39;, 37),
+ (&#39;fry rice&#39;, 23),
+ (&#39;bean sauce&#39;, 23),
+ (&#39;black bean&#39;, 21),
+ (&#39;bbq pork&#39;, 19),
+ (&#39;deep fried&#39;, 16),
+ (&#39;steam rice&#39;, 14),
+ (&#39;rice noodle&#39;, 14),
+ (&#39;soup noodle&#39;, 14),
+ (&#39;with black&#39;, 14),
+ (&#39;beef with&#39;, 13),
+ (&#39;deep fry&#39;, 13),
+ (&#39;fry noodle&#39;, 12),
+ (&#39;pork with&#39;, 12),
+ (&#39;fried rice&#39;, 12),
+ (&#39;chicken white&#39;, 12),
+ (&#39;long bao&#39;, 11),
+ (&#39;on steam&#39;, 11),
+ (&#39;or chicken&#39;, 11),
+ (&#39;beef or&#39;, 11),
+ (&#39;bean curd&#39;, 10),
+ (&#39;spicy salt&#39;, 10),
+ (&#39;xiao long&#39;, 9),
+ (&#39;sour soup&#39;, 9),
+ (&#39;pan fry&#39;, 9),
+ (&#39;and sour&#39;, 9),
+ (&#39;rice roll&#39;, 9),
+ (&#39;fish maw&#39;, 9),
+ (&#39;stir fry&#39;, 9),
+ (&#39;chicken with&#39;, 9),
+ (&#39;green onion&#39;, 9),
+ (&#39;rice with&#39;, 9),
+ (&#39;white meat&#39;, 9),
+ (&#39;noodle soup&#39;, 8),
+ (&#39;sour pork&#39;, 8),
+ (&#39;soup with&#39;, 8),
+ (&#39;pork bun&#39;, 7),
+ (&#39;soy chicken&#39;, 7),
+ (&#39;mix vegetable&#39;, 7),
+ (&#39;curry chicken&#39;, 7),
+ (&#39;with dry&#39;, 7),
+ (&#39;in black&#39;, 7),
+ (&#39;pan fried&#39;, 7),
+ (&#39;honey garlic&#39;, 6),
+ (&#39;wonton soup&#39;, 6),
+ (&#39;cumin beef&#39;, 6),
+ (&#39;house special&#39;, 6),
+ (&#39;curry beef&#39;, 6),
+ (&#39;chicken chow&#39;, 6),
+ (&#39;shred pork&#39;, 6),
+ (&#39;kung pao&#39;, 6),
+ (&#39;with beef&#39;, 6),
+ (&#39;chop suey&#39;, 6),
+ (&#39;fry pork&#39;, 5),
+ (&#39;pork dumpling&#39;, 5),
+ (&#39;garlic sparerib&#39;, 5),
+ (&#39;cumin lamb&#39;, 5),
+ (&#39;soy sauce&#39;, 5),
+ (&#39;with garlic&#39;, 5),
+ (&#39;with chili&#39;, 5),
+ (&#39;chili sauce&#39;, 5),
+ (&#39;chili garlic&#39;, 5),
+ (&#39;garlic sauce&#39;, 5),
+ (&#39;with green&#39;, 5),
+ (&#39;prawn with&#39;, 5),
+ (&#39;hot and&#39;, 5),
+ (&#39;crab meat&#39;, 5),
+ (&#39;green bean&#39;, 5),
+ (&#39;squid with&#39;, 5),
+ (&#39;chicken or&#39;, 5),
+ (&#39;or beef&#39;, 5),
+ (&#39;chicken wing&#39;, 5)]
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">trigrams</span><span class="p">[</span><span class="s1">&#39;ch&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">count_ngrams</span><span class="p">(</span><span class="n">restaurant_type</span><span class="o">=</span><span class="s1">&#39;ch&#39;</span><span class="p">,</span> <span class="n">text_col</span><span class="o">=</span><span class="s2">&quot;tokens_en&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">min_freq</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">trigrams</span><span class="p">[</span><span class="s1">&#39;ch&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[(&#39;black bean sauce&#39;, 20),
+ (&#39;on steam rice&#39;, 11),
+ (&#39;with black bean&#39;, 11),
+ (&#39;beef or chicken&#39;, 10),
+ (&#39;xiao long bao&#39;, 9),
+ (&#39;chicken white meat&#39;, 9),
+ (&#39;chicken chow mein&#39;, 6),
+ (&#39;in black bean&#39;, 6),
+ (&#39;chicken or beef&#39;, 5),
+ (&#39;sweet and sour&#39;, 4),
+ (&#39;and sour pork&#39;, 4),
+ (&#39;pork fry rice&#39;, 4),
+ (&#39;with oyster sauce&#39;, 4),
+ (&#39;beef chow mein&#39;, 4),
+ (&#39;beef soup noodle&#39;, 4),
+ (&#39;with cashew nut&#39;, 4),
+ (&#39;hot and sour&#39;, 4),
+ (&#39;salt and pepper&#39;, 4),
+ (&#39;rice noodle with&#39;, 4),
+ (&#39;noodle with beef&#39;, 4),
+ (&#39;bean curd with&#39;, 4),
+ (&#39;pan fried rice&#39;, 4)]
+</pre></div>
+</div>
+<section id="export-word-counters">
+<h3>Export word counters<a class="headerlink" href="#export-word-counters" title="Link to this heading">#</a></h3>
+<p>Now we can define some functions to search for keyword, and how many times they mentioned in the dataset</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># export data to a csv file</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;ngrams.csv&#39;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s1">&#39;Restaurant type&#39;</span><span class="p">,</span> <span class="s1">&#39;N-gram&#39;</span><span class="p">,</span> <span class="s1">&#39;Phrase&#39;</span><span class="p">,</span> <span class="s1">&#39;Count&#39;</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">restaurant_type</span><span class="p">,</span> <span class="n">phrases</span> <span class="ow">in</span> <span class="n">bigrams</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">phrase</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">phrases</span><span class="p">:</span>
+            <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">restaurant_type</span><span class="p">,</span> <span class="s1">&#39;bigram&#39;</span><span class="p">,</span> <span class="n">phrase</span><span class="p">,</span> <span class="n">count</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">restaurant_type</span><span class="p">,</span> <span class="n">phrases</span> <span class="ow">in</span> <span class="n">trigrams</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">phrase</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">phrases</span><span class="p">:</span>
+            <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">restaurant_type</span><span class="p">,</span> <span class="s1">&#39;trigram&#39;</span><span class="p">,</span> <span class="n">phrase</span><span class="p">,</span> <span class="n">count</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;unigrams.csv&#39;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s1">&#39;Restaurant type&#39;</span><span class="p">,</span> <span class="s1">&#39;Language&#39;</span><span class="p">,</span> <span class="s1">&#39;Phrase&#39;</span><span class="p">,</span> <span class="s1">&#39;Count&#39;</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">restaurant_type</span><span class="p">,</span> <span class="n">phrases</span> <span class="ow">in</span> <span class="n">unigrams</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">restaurant_type</span> <span class="o">==</span> <span class="s1">&#39;en&#39;</span><span class="p">:</span> 
+            <span class="k">for</span> <span class="n">phrase</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">phrases</span><span class="p">:</span>
+                <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s1">&#39;Western&#39;</span><span class="p">,</span> <span class="s1">&#39;English&#39;</span><span class="p">,</span> <span class="n">phrase</span><span class="p">,</span> <span class="n">count</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">restaurant_type</span> <span class="o">==</span> <span class="s1">&#39;ch_en&#39;</span><span class="p">:</span> 
+            <span class="k">for</span> <span class="n">phrase</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">phrases</span><span class="p">:</span>
+                <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s1">&#39;Chinese&#39;</span><span class="p">,</span> <span class="s1">&#39;English&#39;</span><span class="p">,</span> <span class="n">phrase</span><span class="p">,</span> <span class="n">count</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">restaurant_type</span> <span class="o">==</span> <span class="s1">&#39;ch_ch&#39;</span><span class="p">:</span> 
+            <span class="k">for</span> <span class="n">phrase</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">phrases</span><span class="p">:</span>
+                <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s1">&#39;Chinese&#39;</span><span class="p">,</span> <span class="s1">&#39;Chinese&#39;</span><span class="p">,</span> <span class="n">phrase</span><span class="p">,</span> <span class="n">count</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">restaurant_type</span><span class="p">,</span> <span class="n">phrases</span> <span class="ow">in</span> <span class="n">unigrams</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">restaurant_type</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>en
+ch_en
+ch_ch
+</pre></div>
+</div>
+</section>
+<section id="keyword-search">
+<h3>Keyword search<a class="headerlink" href="#keyword-search" title="Link to this heading">#</a></h3>
+<p>Now we can define some functions to search for keyword, and how many times they mentioned in the dataset</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_mention_count</span><span class="p">(</span><span class="n">keyword</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">vocab_df</span><span class="p">,</span> <span class="n">restaurant_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">search_col</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Count how many times a keyword (dish) was mentioned in the dataset</span>
+<span class="sd">        Input:</span>
+<span class="sd">            df: the dataframe to search on</span>
+<span class="sd">            keyword: the keyword to search for</span>
+<span class="sd">            restaurent_type: &quot;ch&quot; (Chinese) or &quot;en&quot; (Western). None to search in both categories</span>
+<span class="sd">            search_col: the column name to search. Default &quot;text&quot;</span>
+<span class="sd">        Return:</span>
+<span class="sd">            number of mentions in dataset</span>
+<span class="sd">            </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">kw</span> <span class="o">=</span> <span class="n">keyword</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> 
+    <span class="k">if</span> <span class="n">restaurant_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;restaurant_type_en_ch == @restaurant_type&quot;</span><span class="p">)[</span><span class="n">search_col</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">kw</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">search_col</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">kw</span><span class="p">)</span>
+    
+    <span class="c1"># return len(result)</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="n">get_mention_count</span><span class="p">(</span><span class="s1">&#39;burger&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>38
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">keyword</span> <span class="o">=</span> <span class="s1">&#39;burger&#39;</span>
+<span class="n">kw_count</span> <span class="o">=</span> <span class="n">get_mention_count</span><span class="p">(</span><span class="n">keyword</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The dish [</span><span class="si">{</span><span class="n">keyword</span><span class="si">}</span><span class="s2">] are mentioned [</span><span class="si">{</span><span class="n">kw_count</span><span class="si">}</span><span class="s2">] times in all the dataset&quot;</span><span class="p">)</span>
+
+<span class="n">kw_count</span> <span class="o">=</span> <span class="n">get_mention_count</span><span class="p">(</span><span class="n">keyword</span><span class="p">,</span> <span class="n">restaurant_type</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">keyword</span><span class="si">}</span><span class="s2">] mentioned [</span><span class="si">{</span><span class="n">kw_count</span><span class="si">}</span><span class="s2">] times in the Western restaurants&quot;</span><span class="p">)</span>
+
+<span class="n">kw_count</span> <span class="o">=</span> <span class="n">get_mention_count</span><span class="p">(</span><span class="n">keyword</span><span class="p">,</span> <span class="n">restaurant_type</span><span class="o">=</span><span class="s2">&quot;ch&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">keyword</span><span class="si">}</span><span class="s2">] mentioned [</span><span class="si">{</span><span class="n">kw_count</span><span class="si">}</span><span class="s2">] times in the Chinese restaurants&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The dish [burger] are mentioned [38] times in all the dataset
+[burger] mentioned [38] times in the Western restaurants
+[burger] mentioned [0] times in the Chinese restaurants
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">keyword</span> <span class="o">=</span> <span class="s1">&#39;soup&#39;</span>
+<span class="n">kw_count</span> <span class="o">=</span> <span class="n">get_mention_count</span><span class="p">(</span><span class="n">keyword</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The dish [</span><span class="si">{</span><span class="n">keyword</span><span class="si">}</span><span class="s2">] are mentioned [</span><span class="si">{</span><span class="n">kw_count</span><span class="si">}</span><span class="s2">] times in all the dataset&quot;</span><span class="p">)</span>
+
+<span class="n">kw_count</span> <span class="o">=</span> <span class="n">get_mention_count</span><span class="p">(</span><span class="n">keyword</span><span class="p">,</span> <span class="n">restaurant_type</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">keyword</span><span class="si">}</span><span class="s2">] mentioned [</span><span class="si">{</span><span class="n">kw_count</span><span class="si">}</span><span class="s2">] times in the Western restaurants&quot;</span><span class="p">)</span>
+
+<span class="n">kw_count</span> <span class="o">=</span> <span class="n">get_mention_count</span><span class="p">(</span><span class="n">keyword</span><span class="p">,</span> <span class="n">restaurant_type</span><span class="o">=</span><span class="s2">&quot;ch&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">keyword</span><span class="si">}</span><span class="s2">] mentioned [</span><span class="si">{</span><span class="n">kw_count</span><span class="si">}</span><span class="s2">] times in the Chinese restaurants&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The dish [soup] are mentioned [72] times in all the dataset
+[soup] mentioned [4] times in the Western restaurants
+[soup] mentioned [68] times in the Chinese restaurants
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">keyword</span> <span class="o">=</span> <span class="s1">&#39;noodle&#39;</span>
+<span class="n">kw_count</span> <span class="o">=</span> <span class="n">get_mention_count</span><span class="p">(</span><span class="n">keyword</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The dish [</span><span class="si">{</span><span class="n">keyword</span><span class="si">}</span><span class="s2">] are mentioned [</span><span class="si">{</span><span class="n">kw_count</span><span class="si">}</span><span class="s2">] times in all the dataset&quot;</span><span class="p">)</span>
+
+<span class="n">kw_count</span> <span class="o">=</span> <span class="n">get_mention_count</span><span class="p">(</span><span class="n">keyword</span><span class="p">,</span> <span class="n">restaurant_type</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">keyword</span><span class="si">}</span><span class="s2">] mentioned [</span><span class="si">{</span><span class="n">kw_count</span><span class="si">}</span><span class="s2">] times in the Western restaurants&quot;</span><span class="p">)</span>
+
+<span class="n">kw_count</span> <span class="o">=</span> <span class="n">get_mention_count</span><span class="p">(</span><span class="n">keyword</span><span class="p">,</span> <span class="n">restaurant_type</span><span class="o">=</span><span class="s2">&quot;ch&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">keyword</span><span class="si">}</span><span class="s2">] mentioned [</span><span class="si">{</span><span class="n">kw_count</span><span class="si">}</span><span class="s2">] times in the Chinese restaurants&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The dish [noodle] are mentioned [81] times in all the dataset
+[noodle] mentioned [3] times in the Western restaurants
+[noodle] mentioned [78] times in the Chinese restaurants
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># search for Chinese dish in &#39;ch_counterpart_if_any&#39; column</span>
+
+<span class="n">keyword</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;雞飯&#39;</span> <span class="c1"># &quot;chicken rice&quot;</span>
+<span class="n">kw_count</span> <span class="o">=</span> <span class="n">get_mention_count</span><span class="p">(</span><span class="n">keyword</span><span class="p">,</span> <span class="n">search_col</span><span class="o">=</span><span class="s1">&#39;ch_counterpart_if_any&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The dish [</span><span class="si">{</span><span class="n">keyword</span><span class="si">}</span><span class="s2">] are mentioned [</span><span class="si">{</span><span class="n">kw_count</span><span class="si">}</span><span class="s2">] times in all the dataset&quot;</span><span class="p">)</span>
+
+<span class="n">kw_count</span> <span class="o">=</span> <span class="n">get_mention_count</span><span class="p">(</span><span class="n">keyword</span><span class="p">,</span> <span class="n">restaurant_type</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">search_col</span><span class="o">=</span><span class="s1">&#39;ch_counterpart_if_any&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">keyword</span><span class="si">}</span><span class="s2">] mentioned [</span><span class="si">{</span><span class="n">kw_count</span><span class="si">}</span><span class="s2">] times in the Western restaurants&quot;</span><span class="p">)</span>
+
+<span class="n">kw_count</span> <span class="o">=</span> <span class="n">get_mention_count</span><span class="p">(</span><span class="n">keyword</span><span class="p">,</span> <span class="n">restaurant_type</span><span class="o">=</span><span class="s2">&quot;ch&quot;</span><span class="p">,</span>  <span class="n">search_col</span><span class="o">=</span><span class="s1">&#39;ch_counterpart_if_any&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">keyword</span><span class="si">}</span><span class="s2">] mentioned [</span><span class="si">{</span><span class="n">kw_count</span><span class="si">}</span><span class="s2">] times in the Chinese restaurants&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The dish [雞飯] are mentioned [5] times in all the dataset
+[雞飯] mentioned [0] times in the Western restaurants
+[雞飯] mentioned [5] times in the Chinese restaurants
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the CSV file</span>
+<span class="n">df_vocab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/Users/SFL/Documents/GitHub/Codeswitching-Project/data/output/tokenized_food_vocab_2.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Assuming there&#39;s a single column with words, named &#39;word&#39; for this example</span>
+<span class="c1"># Update &#39;word&#39; to match your actual column name</span>
+<span class="n">words_with_punctuation</span> <span class="o">=</span> <span class="n">df_vocab</span><span class="p">[</span><span class="n">df_vocab</span><span class="p">[</span><span class="s1">&#39;word_dish&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\w+[&#39;.]\w+&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)))]</span>
+
+<span class="c1"># This gives you a filtered DataFrame with only the words containing punctuation</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">words_with_punctuation</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>                                              word_dish lang_en_ch   
+107                       Lettuce w.Fermented Bean Curd    en + ch  \
+188                              General Tsao&#39;s Chicken         en   
+261             Bird&#39;s Nest with Crab Meat and Fish Maw         en   
+370        Napa Cabbage in Broth w.Fish Maw &amp; Fish Tofu         en   
+469                              General Tsao&#39;s Chicken         en   
+506                                Xi&#39;an Cold Noodles l         en   
+513                                B.B.Q.Pork Chop Suey         en   
+515                 B.B.Q. Pork or Chicken Egg Foo Yong         en   
+533                          Bean Curd with B.B.Q. Pork         en   
+542                              B.B.Q. Pork Fried Rice         en   
+545                     Shrimp &amp; B.B.Q. Pork Fried Rice         en   
+558                                B.B.Q.Pork Chow Mein         en   
+578                           B.B.Q. Pork with Broccoli         en   
+604                        Sliced B.B.Q. Pork Chow Mein         en   
+614                                      Buddha&#39;s Feast         en   
+640                                          B.B.Q.Duck         en   
+734                   Sauteed Daikon Cake in X.O. Sauce         en   
+939   Grilled 8 Oz. N.Y. Cut Steak Green Peppercorn ...         en   
+942                                     Mel&#39;s Meatballs         en   
+958                           Mike&#39;s Hot Honey - Bottle         en   
+959                               Nona&#39;s Balsamic Glaze         en   
+1055  Semolina flatbread, za&#39;atar Macedonian feta, t...         en   
+1135  Szechuan Chicken Lettuce Wraps - sweet soy gin...         en   
+1143  Steak + Sushi - tataki-style steak, ponzu sauc...         en   
+1152  The Butcher&#39;s Sandwich - Red wine au jus, cris...         en   
+1153  Hand-Pressed Burger - brioche bun, all the gro...         en   
+1154  Protein-Style Burger - forget the bun, wrapped...         en   
+1171  JOEY Classic Steak - 7oz CAB® sirloin, loaded ...         en   
+1173  Steak Frites - 6oz cut, garlic butter, rocket ...         en   
+1176  Steak + Sushi - tataki-style, ponzu sauce, sea...         en   
+1177  Steak &amp; Ravioli Bianco - sliced grilled sirloi...         en   
+
+     ch_counterpart_if_any          restaurant_name restaurant_type_en_ch   
+107                   腐乳生菜            Chinatown BBQ                    ch  \
+188                    NaN       Happy Noodle House                    ch   
+261                    NaN  Seaport City Restaurant                    ch   
+370                    NaN  Seaport City Restaurant                    ch   
+469                   左宗棠雞         Peaceful Express                    ch   
+506                    凉拌面         Peaceful Express                    ch   
+513                    NaN       New Sun Restaurant                    ch   
+515                    NaN       New Sun Restaurant                    ch   
+533                    NaN       New Sun Restaurant                    ch   
+542                    NaN       New Sun Restaurant                    ch   
+545                    NaN       New Sun Restaurant                    ch   
+558                    NaN       New Sun Restaurant                    ch   
+578                    NaN       New Sun Restaurant                    ch   
+604                    NaN       New Sun Restaurant                    ch   
+614                    NaN       New Sun Restaurant                    ch   
+640                    NaN       New Sun Restaurant                    ch   
+734                    NaN              Sun Sui Wah                    ch   
+939                    NaN                 Giardino                    en   
+942                    NaN    Dave &amp; Mel&#39;s Pizzeria                    en   
+958                    NaN    Dave &amp; Mel&#39;s Pizzeria                    en   
+959                    NaN    Dave &amp; Mel&#39;s Pizzeria                    en   
+1055                   NaN                  Chambar                    en   
+1135                   NaN             JOEY Burrard                    en   
+1143                   NaN             JOEY Burrard                    en   
+1152                   NaN             JOEY Burrard                    en   
+1153                   NaN             JOEY Burrard                    en   
+1154                   NaN             JOEY Burrard                    en   
+1171                   NaN             JOEY Burrard                    en   
+1173                   NaN             JOEY Burrard                    en   
+1176                   NaN             JOEY Burrard                    en   
+1177                   NaN             JOEY Burrard                    en   
+
+                                            website_url   
+107   https://www.skipthedishes.com/chinatown-bbq-pe...  \
+188   https://ritual.co/order/happy-noodle-house-dav...   
+261   https://swypepos.com/olo/en/seaportcity/001?t=...   
+370   https://swypepos.com/olo/en/seaportcity/001?t=...   
+469   https://www.peacefulrestaurant.com/shop/Burnab...   
+506   https://www.peacefulrestaurant.com/shop/Burnab...   
+513    https://www.newsunrestaurant.ca/?cid=15514&amp;tab=0   
+515    https://www.newsunrestaurant.ca/?cid=15514&amp;tab=0   
+533    https://www.newsunrestaurant.ca/?cid=15514&amp;tab=0   
+542    https://www.newsunrestaurant.ca/?cid=15514&amp;tab=0   
+545    https://www.newsunrestaurant.ca/?cid=15514&amp;tab=0   
+558    https://www.newsunrestaurant.ca/?cid=15514&amp;tab=0   
+578    https://www.newsunrestaurant.ca/?cid=15514&amp;tab=0   
+604    https://www.newsunrestaurant.ca/?cid=15514&amp;tab=0   
+614    https://www.newsunrestaurant.ca/?cid=15514&amp;tab=0   
+640    https://www.newsunrestaurant.ca/?cid=15514&amp;tab=0   
+734   https://gosnappy.io/owa/snappy/detail/G6082/60...   
+939                   http://umberto.com/giardino/menu/   
+942                        https://daveandmels.com/menu   
+958                        https://daveandmels.com/menu   
+959                        https://daveandmels.com/menu   
+1055              https://www.chambar.com/menus/dinner/   
+1135  https://joeyrestaurants.com/location/joey-ship...   
+1143  https://joeyrestaurants.com/location/joey-ship...   
+1152  https://joeyrestaurants.com/location/joey-ship...   
+1153  https://joeyrestaurants.com/location/joey-ship...   
+1154  https://joeyrestaurants.com/location/joey-ship...   
+1171  https://joeyrestaurants.com/location/joey-ship...   
+1173  https://joeyrestaurants.com/location/joey-ship...   
+1176  https://joeyrestaurants.com/location/joey-ship...   
+1177  https://joeyrestaurants.com/location/joey-ship...   
+
+                                                   text   
+107                       lettuce w.fermented bean curd  \
+188                              general tsao&#39;s chicken   
+261             bird&#39;s nest with crab meat and fish maw   
+370        napa cabbage in broth w.fish maw &amp; fish tofu   
+469                              general tsao&#39;s chicken   
+506                                xi&#39;an cold noodles l   
+513                                b.b.q.pork chop suey   
+515                 b.b.q. pork or chicken egg foo yong   
+533                          bean curd with b.b.q. pork   
+542                              b.b.q. pork fried rice   
+545                     shrimp &amp; b.b.q. pork fried rice   
+558                                b.b.q.pork chow mein   
+578                           b.b.q. pork with broccoli   
+604                        sliced b.b.q. pork chow mein   
+614                                      buddha&#39;s feast   
+640                                          b.b.q.duck   
+734                   sauteed daikon cake in x.o. sauce   
+939   grilled 8 oz. n.y. cut steak green peppercorn ...   
+942                                     mel&#39;s meatballs   
+958                           mike&#39;s hot honey - bottle   
+959                               nona&#39;s balsamic glaze   
+1055  semolina flatbread, za&#39;atar macedonian feta, t...   
+1135  szechuan chicken lettuce wraps - sweet soy gin...   
+1143  steak + sushi - tataki-style steak, ponzu sauc...   
+1152  the butcher&#39;s sandwich - red wine au jus, cris...   
+1153  hand-pressed burger - brioche bun, all the gro...   
+1154  protein-style burger - forget the bun, wrapped...   
+1171  joey classic steak - 7oz cab® sirloin, loaded ...   
+1173  steak frites - 6oz cut, garlic butter, rocket ...   
+1176  steak + sushi - tataki-style, ponzu sauce, sea...   
+1177  steak &amp; ravioli bianco - sliced grilled sirloi...   
+
+                                              tokens_en     tokens_ch  
+107          [&#39;lettuce&#39;, &#39;w.fermented&#39;, &#39;bean&#39;, &#39;curd&#39;]  [&#39;腐乳&#39;, &#39;生菜&#39;]  
+188                [&#39;general&#39;, &#39;tsao&#39;, &quot;&#39;s&quot;, &#39;chicken&#39;]            []  
+261   [&#39;bird&#39;, &quot;&#39;s&quot;, &#39;nest&#39;, &#39;with&#39;, &#39;crab&#39;, &#39;meat&#39;,...            []  
+370   [&#39;napa&#39;, &#39;cabbage&#39;, &#39;in&#39;, &#39;broth&#39;, &#39;w.fish&#39;, &#39;...            []  
+469                [&#39;general&#39;, &#39;tsao&#39;, &quot;&#39;s&quot;, &#39;chicken&#39;]  [&#39;左宗棠&#39;, &#39;雞&#39;]  
+506                   [&quot;xi&#39;an&quot;, &#39;cold&#39;, &#39;noodles&#39;, &#39;l&#39;]       [&#39;凉拌面&#39;]  
+513                      [&#39;b.b.q.pork&#39;, &#39;chop&#39;, &#39;suey&#39;]            []  
+515   [&#39;b.b.q&#39;, &#39;.&#39;, &#39;pork&#39;, &#39;or&#39;, &#39;chicken&#39;, &#39;egg&#39;,...            []  
+533      [&#39;bean&#39;, &#39;curd&#39;, &#39;with&#39;, &#39;b.b.q&#39;, &#39;.&#39;, &#39;pork&#39;]            []  
+542             [&#39;b.b.q&#39;, &#39;.&#39;, &#39;pork&#39;, &#39;fried&#39;, &#39;rice&#39;]            []  
+545   [&#39;shrimp&#39;, &#39;&amp;&#39;, &#39;b.b.q&#39;, &#39;.&#39;, &#39;pork&#39;, &#39;fried&#39;,...            []  
+558                      [&#39;b.b.q.pork&#39;, &#39;chow&#39;, &#39;mein&#39;]            []  
+578          [&#39;b.b.q&#39;, &#39;.&#39;, &#39;pork&#39;, &#39;with&#39;, &#39;broccoli&#39;]            []  
+604    [&#39;sliced&#39;, &#39;b.b.q&#39;, &#39;.&#39;, &#39;pork&#39;, &#39;chow&#39;, &#39;mein&#39;]            []  
+614                           [&#39;buddha&#39;, &quot;&#39;s&quot;, &#39;feast&#39;]            []  
+640                                      [&#39;b.b.q.duck&#39;]            []  
+734   [&#39;sauteed&#39;, &#39;daikon&#39;, &#39;cake&#39;, &#39;in&#39;, &#39;x.o&#39;, &#39;.&#39;...            []  
+939   [&#39;grilled&#39;, &#39;8&#39;, &#39;oz&#39;, &#39;.&#39;, &#39;n.y&#39;, &#39;.&#39;, &#39;cut&#39;,...            []  
+942                          [&#39;mel&#39;, &quot;&#39;s&quot;, &#39;meatballs&#39;]            []  
+958       [&#39;mike&#39;, &quot;&#39;s&quot;, &#39;hot&#39;, &#39;honey&#39;, &#39;-&#39;, &#39;bottle&#39;]            []  
+959                 [&#39;nona&#39;, &quot;&#39;s&quot;, &#39;balsamic&#39;, &#39;glaze&#39;]            []  
+1055  [&#39;semolina&#39;, &#39;flatbread&#39;, &#39;,&#39;, &quot;za&#39;atar&quot;, &#39;mac...            []  
+1135  [&#39;szechuan&#39;, &#39;chicken&#39;, &#39;lettuce&#39;, &#39;wraps&#39;, &#39;-...            []  
+1143  [&#39;steak&#39;, &#39;+&#39;, &#39;sushi&#39;, &#39;-&#39;, &#39;tataki&#39;, &#39;-&#39;, &#39;s...            []  
+1152  [&#39;the&#39;, &#39;butcher&#39;, &quot;&#39;s&quot;, &#39;sandwich&#39;, &#39;-&#39;, &#39;red...            []  
+1153  [&#39;hand&#39;, &#39;-&#39;, &#39;pressed&#39;, &#39;burger&#39;, &#39;-&#39;, &#39;brioc...            []  
+1154  [&#39;protein&#39;, &#39;-&#39;, &#39;style&#39;, &#39;burger&#39;, &#39;-&#39;, &#39;forg...            []  
+1171  [&#39;joey&#39;, &#39;classic&#39;, &#39;steak&#39;, &#39;-&#39;, &#39;7&#39;, &#39;oz&#39;, &#39;...            []  
+1173  [&#39;steak&#39;, &#39;frites&#39;, &#39;-&#39;, &#39;6&#39;, &#39;oz&#39;, &#39;cut&#39;, &#39;,&#39;...            []  
+1176  [&#39;steak&#39;, &#39;+&#39;, &#39;sushi&#39;, &#39;-&#39;, &#39;tataki&#39;, &#39;-&#39;, &#39;s...            []  
+1177  [&#39;steak&#39;, &#39;&amp;&#39;, &#39;ravioli&#39;, &#39;bianco&#39;, &#39;-&#39;, &#39;slic...            []  
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="etl-for-llm-sales-messaging.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Scalable Data ETL for AI-Powered Messaging</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="llm-reasoning-graphic-puzzles.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Enhancing LLM Reasoning for Visual Tasks</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#team-members">👥 Team Members</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-leads-ubc-linguistics">🎓 Project Leads (UBC Linguistics)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-overview">📘 Project Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning-and-pre-processing">Data cleaning and pre-processing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenization-for-now-we-process-and-tokenize-the-english-like-text-only">Tokenization: For now, we process and tokenize the english-like text only.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis">Exploratory Data Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#n-grams">N-grams</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#export-word-counters">Export word counters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keyword-search">Keyword search</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
