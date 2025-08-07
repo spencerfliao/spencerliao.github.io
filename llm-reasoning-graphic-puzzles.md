@@ -1,4 +1,4 @@
-# Enhancing LLM Reasoning for Visual Tasks
+# Enhancing LLM Visual Reasoning
                
 
 ## Corpus + explanation

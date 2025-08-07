@@ -1,4 +1,4 @@
-# Mining Codeswitching Patterns in Bilingual Menus
+# N-grams Pattern-Mining in Menus
 
 **Speech in Context Lab — UBC Department of Linguistics**
 

@@ -4,7 +4,7 @@
 format: jb-book
 root: intro
 chapters:
-- file: etl-for-llm-sales-messaging.md
-- file: codeswitching-corpus-mining.md
-- file: llm-reasoning-graphic-puzzles.md
-- file: multilingual-text-detox.md
+- file: etl-for-llm-sales-messaging_nob
+- file: codeswitching-corpus-mining_nob
+- file: llm-reasoning-graphic-puzzles
+- file: multilingual-text-detox

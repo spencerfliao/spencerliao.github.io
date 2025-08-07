@@ -57,11 +57,11 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'etl-for-llm-sales-messaging';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'etl-for-llm-sales-messaging_nob';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="ETL for AI-Powered Messaging" href="etl-for-llm-sales-messaging_nob.html" />
-    <link rel="prev" title="Welcome to your Jupyter Book" href="intro.html" />
+    <link rel="next" title="N-grams Pattern-mining in Menus" href="codeswitching-corpus-mining_nob.html" />
+    <link rel="prev" title="Welcome to my Project Collection" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -175,15 +175,12 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Welcome to your Jupyter Book
+                    Welcome to my Project Collection
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">ETL for AI-Powered Messaging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="etl-for-llm-sales-messaging_nob.html">ETL for AI-Powered Messaging</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="codeswitching-corpus-mining.html">N-grams Pattern-Mining in Menus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="codeswitching-corpus-mining_nob.html">N-grams Pattern-mining in Menus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="llm-reasoning-graphic-puzzles.html">Enhancing LLM Visual Reasoning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="multilingual-text-detox.html">Multilingual Text Detoxification</a></li>
@@ -258,7 +255,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fetl-for-llm-sales-messaging.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fetl-for-llm-sales-messaging_nob.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -288,7 +285,7 @@
       
       
       
-      <li><a href="_sources/etl-for-llm-sales-messaging.md" target="_blank"
+      <li><a href="_sources/etl-for-llm-sales-messaging_nob.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -298,7 +295,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -387,7 +384,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-architecture">Pipeline Architecture</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-walkthrough">Pipeline Walkthrough</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-functionality">1. Search Functionality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parse-functionality">2. Parse Functionality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">3. Evaluation</a><ul class="nav section-nav flex-column">
@@ -448,31 +444,50 @@ document.write(`
 <li><p>Miikka Silfverberg | UBC Professor</p></li>
 <li><p>Partner Company Team</p></li>
 </ul>
-</section>
-</section>
 <hr class="docutils" />
-<section id="pipeline-walkthrough">
-<h2>Pipeline Walkthrough<a class="headerlink" href="#pipeline-walkthrough" title="Link to this heading">#</a></h2>
 <p>Imports</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">BeautifulSoup</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">fuzzywuzzy</span><span class="w"> </span><span class="kn">import</span> <span class="n">process</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span><span class="w"> </span><span class="nn">fuzzywuzzy</span><span class="w"> </span><span class="kn">import</span> <span class="n">process</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;fuzzywuzzy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="search-functionality">
 <h2>1. Search Functionality<a class="headerlink" href="#search-functionality" title="Link to this heading">#</a></h2>
 <p>Function to quickly get BeautifulSoup from requests</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_soup</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_soup</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
     <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="s2">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36&quot;</span><span class="p">})</span>
     <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">soup</span>
 </pre></div>
 </div>
+</div>
+</div>
 <p>Function that searches for CIK on SEC EDGAR using company name, returns either single or list of results</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">search_cik</span><span class="p">(</span><span class="n">company_name</span><span class="p">):</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">search_cik</span><span class="p">(</span><span class="n">company_name</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">fetch_data</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
         <span class="n">search_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;https://www.sec.gov/cgi-bin/browse-edgar?company=</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">&amp;match=&amp;filenum=&amp;State=&amp;Country=&amp;SIC=&amp;owner=exclude&amp;Find=Find+Companies&amp;action=getcompany&#39;</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">search_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="s2">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36&quot;</span><span class="p">})</span>
@@ -528,8 +543,12 @@ document.write(`
 <span class="n">search_cik</span><span class="p">(</span><span class="s1">&#39;Intercom&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
 <p>Fuctions that finds the best match and produces the CIK url</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_cik_url</span><span class="p">(</span><span class="n">company_name</span><span class="p">):</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_cik_url</span><span class="p">(</span><span class="n">company_name</span><span class="p">):</span>
     <span class="n">search_result</span> <span class="o">=</span> <span class="n">search_cik</span><span class="p">(</span><span class="n">company_name</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">search_result</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span>
@@ -581,8 +600,12 @@ document.write(`
 <span class="n">cik_url</span>
 </pre></div>
 </div>
+</div>
+</div>
 <p>Function to get the url to 10-K filing document in HTML format, with CIK url as key</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_10k_url</span><span class="p">(</span><span class="n">cik_url</span><span class="p">):</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_10k_url</span><span class="p">(</span><span class="n">cik_url</span><span class="p">):</span>
     <span class="n">soup1</span> <span class="o">=</span> <span class="n">get_soup</span><span class="p">(</span><span class="n">cik_url</span><span class="p">)</span>
 
     <span class="n">filing_detail_url</span> <span class="o">=</span> <span class="kc">None</span>
@@ -617,10 +640,16 @@ document.write(`
 <span class="n">html_url</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;https://www.sec.gov/Archives/edgar/data/1609989/000160998918000019/bluebuffalo12311710-k.htm&#39;
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;https://www.sec.gov/Archives/edgar/data/1609989/000160998918000019/bluebuffalo12311710-k.htm&#39;
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_10k_file</span><span class="p">(</span><span class="n">html_url</span><span class="p">):</span>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_10k_file</span><span class="p">(</span><span class="n">html_url</span><span class="p">):</span>
     
     <span class="k">if</span> <span class="n">html_url</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">html_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="s2">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36&quot;</span><span class="p">})</span>
@@ -629,15 +658,23 @@ document.write(`
         <span class="k">return</span> <span class="kc">None</span>
 </pre></div>
 </div>
+</div>
+</div>
 </section>
 <section id="parse-functionality">
 <h2>2. Parse Functionality<a class="headerlink" href="#parse-functionality" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_url</span> <span class="o">=</span> <span class="n">get_10k_url</span><span class="p">(</span><span class="n">cik_url</span><span class="p">)</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">html_url</span> <span class="o">=</span> <span class="n">get_10k_url</span><span class="p">(</span><span class="n">cik_url</span><span class="p">)</span>
 <span class="n">doc_10k</span> <span class="o">=</span> <span class="n">get_10k_file</span><span class="p">(</span><span class="n">html_url</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
 <p>Function to find all section title names</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">BeautifulSoup</span><span class="p">,</span> <span class="n">Tag</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">BeautifulSoup</span><span class="p">,</span> <span class="n">Tag</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">extract_sections_titles</span><span class="p">(</span><span class="n">html_content</span><span class="p">):</span>
     <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html_content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
@@ -663,8 +700,12 @@ document.write(`
     <span class="k">return</span> <span class="n">sections</span>
 </pre></div>
 </div>
+</div>
+</div>
 <p>Function to find all section title names and href links</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">extract_section_and_links</span><span class="p">(</span><span class="n">html_content</span><span class="p">):</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">extract_section_and_links</span><span class="p">(</span><span class="n">html_content</span><span class="p">):</span>
     <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html_content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
     <span class="n">sections</span> <span class="o">=</span> <span class="p">{}</span>
     
@@ -690,25 +731,30 @@ document.write(`
     <span class="k">return</span> <span class="n">sections</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">section_links</span> <span class="o">=</span> <span class="n">extract_section_and_links</span><span class="p">(</span><span class="n">doc_10k</span><span class="p">)</span>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">section_links</span> <span class="o">=</span> <span class="n">extract_section_and_links</span><span class="p">(</span><span class="n">doc_10k</span><span class="p">)</span>
 <span class="n">sections_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">section_links</span><span class="o">.</span><span class="n">items</span><span class="p">()),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Section Title&#39;</span><span class="p">,</span> <span class="s1">&#39;Link&#39;</span><span class="p">])</span>
 <span class="n">sections_df</span>
 </pre></div>
 </div>
-<div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.dataframe tbody tr th {
-    vertical-align: top;
-}
 
-.dataframe thead th {
-    text-align: right;
-}
-</pre></div>
-</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
 </style>
 <table border="1" class="dataframe">
   <thead>
@@ -826,9 +872,11 @@ document.write(`
     </tr>
   </tbody>
 </table>
+</div></div></div>
 </div>
-<p>Function to find all section title and content</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">extract_sections</span><span class="p">(</span><span class="n">html_content</span><span class="p">):</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">extract_sections</span><span class="p">(</span><span class="n">html_content</span><span class="p">):</span>
     <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html_content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
     <span class="n">sections</span> <span class="o">=</span> <span class="p">{}</span>
 
@@ -876,25 +924,30 @@ document.write(`
     <span class="k">return</span> <span class="n">sections</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">section_dict</span> <span class="o">=</span> <span class="n">extract_sections</span><span class="p">(</span><span class="n">doc_10k</span><span class="p">)</span>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">section_dict</span> <span class="o">=</span> <span class="n">extract_sections</span><span class="p">(</span><span class="n">doc_10k</span><span class="p">)</span>
 <span class="n">sections_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">section_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Section Title&#39;</span><span class="p">,</span> <span class="s1">&#39;Content&#39;</span><span class="p">])</span>
 <span class="n">sections_df</span>
 </pre></div>
 </div>
-<div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.dataframe tbody tr th {
-    vertical-align: top;
-}
 
-.dataframe thead th {
-    text-align: right;
-}
-</pre></div>
-</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
 </style>
 <table border="1" class="dataframe">
   <thead>
@@ -1012,12 +1065,23 @@ document.write(`
     </tr>
   </tbody>
 </table>
+</div></div></div>
+</div>
+<p>Example of output</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">sections_df</span><span class="p">[</span><span class="s1">&#39;Content&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="evaluation">
 <h2>3. Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">#</a></h2>
 <p>Importing company names from database</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">urllib.parse</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ast</span><span class="w"> </span><span class="kn">import</span> <span class="n">literal_eval</span>
@@ -1049,56 +1113,174 @@ document.write(`
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">company_urls</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;names&quot;</span><span class="p">,</span><span class="s2">&quot;urls&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/Users/SFL/Documents/1 Learn/UBC/Capstone/data/training_urls.csv&#39;</span><span class="p">)</span>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>names</th>
+      <th>urls</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Radius Health, Inc.</td>
+      <td>http://www.radiuspharm.com</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>GSK</td>
+      <td>http://www.gskbio.com</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Echoworx</td>
+      <td>http://www.echoworx.com</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Boyd Gaming</td>
+      <td>http://www.boydgaming.com</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Blue Sky Network</td>
+      <td>http://www.blueskynetwork.com</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>14323</th>
+      <td>Optum</td>
+      <td>http://www.optum.com</td>
+    </tr>
+    <tr>
+      <th>14324</th>
+      <td>Integrity Marketing Group LLC</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>14325</th>
+      <td>Lecsor Inc</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>14326</th>
+      <td>Maple City Country Club</td>
+      <td>http://www.maplecitycc.com</td>
+    </tr>
+    <tr>
+      <th>14327</th>
+      <td>Code Laboratories, Inc.</td>
+      <td>http://www.codelaboratories.com</td>
+    </tr>
+  </tbody>
+</table>
+<p>14328 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/Users/SFL/Documents/1 Learn/UBC/Capstone/data/training_urls.csv&#39;</span><span class="p">)</span>
 <span class="n">url_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;urls&#39;</span><span class="p">]</span>
 <span class="n">merged_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">url_df</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;urls&#39;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;urls&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
 <span class="n">train_names</span> <span class="o">=</span> <span class="n">merged_df</span><span class="p">[</span><span class="s1">&#39;names&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 <span class="n">train_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">train_names</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">all_cik_results</span> <span class="o">=</span> <span class="p">[]</span>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_cik_results</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">train_names</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">get_cik_url</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
     <span class="n">all_cik_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>100%|██████████| 3294/3294 [12:52&lt;00:00,  4.27it/s]  
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 3294/3294 [12:52&lt;00:00,  4.27it/s]  
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">valid_cik_results</span> <span class="o">=</span> <span class="p">[</span><span class="n">result</span> <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">all_cik_results</span> <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]</span>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">valid_cik_results</span> <span class="o">=</span> <span class="p">[</span><span class="n">result</span> <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">all_cik_results</span> <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">all_10k_results</span> <span class="o">=</span> <span class="p">[]</span>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_10k_results</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">valid_cik_results</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">get_10k_url</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
     <span class="n">all_10k_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>100%|██████████| 956/956 [02:53&lt;00:00,  5.51it/s]
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 956/956 [02:53&lt;00:00,  5.51it/s]
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">valid_10k_results</span> <span class="o">=</span> <span class="p">[</span><span class="n">result</span> <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">all_10k_results</span> <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]</span>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">valid_10k_results</span> <span class="o">=</span> <span class="p">[</span><span class="n">result</span> <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">all_10k_results</span> <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
+</div>
 </div>
 <p>Evaluating 10-K parsing algorithm</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parsed_10k</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parsed_10k</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">valid_10k_results</span><span class="p">):</span>
     <span class="n">html_content</span> <span class="o">=</span> <span class="n">get_10k_file</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">extract_sections</span><span class="p">(</span><span class="n">html_content</span><span class="p">)</span>
     <span class="n">parsed_10k</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>100%|██████████| 187/187 [14:25&lt;00:00,  4.63s/it]
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 187/187 [14:25&lt;00:00,  4.63s/it]
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">backup</span> <span class="o">=</span> <span class="n">parsed_10k</span>
-</pre></div>
+</div>
 </div>
 <p>Visualizing Section Title Stats</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="n">section_counts</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">document</span><span class="p">)</span> <span class="k">for</span> <span class="n">document</span> <span class="ow">in</span> <span class="n">parsed_10k</span><span class="p">]</span>
 
@@ -1111,8 +1293,14 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><img alt="png" src="10K%20Filing_files/10K%20Filing_39_0.png" /></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/574121aae7c9debb557c5a2385df31bd8ccd2e33c19849cc72f54e37ec510e7c.png" src="_images/574121aae7c9debb557c5a2385df31bd8ccd2e33c19849cc72f54e37ec510e7c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
 
 <span class="n">all_titles</span> <span class="o">=</span> <span class="p">[</span><span class="n">title</span> <span class="k">for</span> <span class="n">document</span> <span class="ow">in</span> <span class="n">parsed_10k</span> <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">document</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
 <span class="n">title_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">all_titles</span><span class="p">)</span>
@@ -1133,8 +1321,10 @@ document.write(`
 <span class="n">top_titles_list</span>
 </pre></div>
 </div>
-<p><img alt="png" src="10K%20Filing_files/10K%20Filing_40_0.png" /></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;Legal Proceedings&#39;,
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/fe8a8bbf115b3cb13cbf8f2f0ec8ff6161ef7a383190f28b30b5ad9d71a08d2e.png" src="_images/fe8a8bbf115b3cb13cbf8f2f0ec8ff6161ef7a383190f28b30b5ad9d71a08d2e.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Legal Proceedings&#39;,
  &#39;Controls and Procedures&#39;,
  &#39;Risk Factors&#39;,
  &#39;Other Information&#39;,
@@ -1186,8 +1376,12 @@ document.write(`
  &#39;Unresolved Staff Comments.&#39;]
 </pre></div>
 </div>
+</div>
+</div>
 <p>Compiling all data into dataframe</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_cik</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_cik</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="s1">&#39;Company Name&#39;</span><span class="p">:</span> <span class="n">train_names</span><span class="p">,</span>
     <span class="s1">&#39;CIK URL&#39;</span><span class="p">:</span> <span class="n">all_cik_results</span>
 <span class="p">})</span>
@@ -1204,8 +1398,12 @@ document.write(`
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">df</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
 <p>Statistics of Evaluation</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">count_all</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count_all</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">count_cik</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;CIK URL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="n">count_10k</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;10K URL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="n">count_sections</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Content&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -1216,46 +1414,51 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Section&gt;0: </span><span class="si">{</span><span class="n">count_sections</span><span class="si">}</span><span class="s2">,  Among 10K: </span><span class="si">{</span><span class="n">count_sections</span><span class="o">/</span><span class="n">count_10k</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Test Size: 3294
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test Size: 3294
 CIK Count: 956, Among All: 0.290
 10K Count: 187,  Among All: 0.057
 Section&gt;0: 144,  Among 10K: 0.770
 </pre></div>
 </div>
+</div>
+</div>
 <p>Exporting sample result data</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Content&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">20</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">())</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">())</span> <span class="o">&lt;</span> <span class="mi">35</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">False</span><span class="p">)]</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Content&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">20</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">())</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">())</span> <span class="o">&lt;</span> <span class="mi">35</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">False</span><span class="p">)]</span>
 </pre></div>
 </div>
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Company Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Content&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;/Users/SFL/Documents/1 Learn/UBC/Capstone/sample_10k_data.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Company Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Content&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;/Users/SFL/Documents/1 Learn/UBC/Capstone/sample_10k_data.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
+</div>
 </div>
 <p>Error analysis</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Content&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">False</span><span class="p">)][</span><span class="s1">&#39;10K URL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Content&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">False</span><span class="p">)][</span><span class="s1">&#39;10K URL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Content&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">False</span><span class="p">)]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;10K URL&#39;</span><span class="p">]</span>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Content&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">False</span><span class="p">)]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;10K URL&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
+</div>
 </div>
 <section id="post-processing-of-sections">
 <h3>Post-Processing of sections<a class="headerlink" href="#post-processing-of-sections" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># List of essential sections</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># List of essential sections</span>
 <span class="n">essential_sections</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;Business&#39;</span><span class="p">,</span> <span class="s1">&#39;Risk Factors&#39;</span><span class="p">,</span> <span class="s1">&#39;Quantitative and Qualitative Disclosures About Market Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Properties&#39;</span><span class="p">,</span>
     <span class="s1">&#39;Legal Proceedings&#39;</span><span class="p">,</span> <span class="s1">&#39;Controls and Procedures&#39;</span><span class="p">,</span> <span class="s1">&#39;Financial Statements and Supplementary Data&#39;</span><span class="p">,</span> 
@@ -1271,8 +1474,12 @@ Section&gt;0: 144,  Among 10K: 0.770
 <span class="p">]</span>
 </pre></div>
 </div>
+</div>
+</div>
 <p>Fuzzy similarity matching</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">fuzzywuzzy</span><span class="w"> </span><span class="kn">import</span> <span class="n">process</span><span class="p">,</span> <span class="n">fuzz</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">fuzzywuzzy</span><span class="w"> </span><span class="kn">import</span> <span class="n">process</span><span class="p">,</span> <span class="n">fuzz</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">find_best_match</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">choices</span><span class="p">):</span>
     <span class="n">best_match</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">extractOne</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">choices</span><span class="p">,</span> <span class="n">scorer</span><span class="o">=</span><span class="n">fuzz</span><span class="o">.</span><span class="n">ratio</span><span class="p">)</span>
@@ -1295,180 +1502,35 @@ Section&gt;0: 144,  Among 10K: 0.770
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Structured&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Structured&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="p">{}</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>WARNING:root:Applied processor reduces input query to empty string, all comparisons will have score 0. [Query: &#39;.&#39;]
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Applied processor reduces input query to empty string, all comparisons will have score 0. [Query: &#39;.&#39;]
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Structured&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">False</span><span class="p">)]</span>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Structured&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">False</span><span class="p">)]</span>
 </pre></div>
 </div>
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Structured&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">False</span><span class="p">)]</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Structured&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">False</span><span class="p">)]</span>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Structured&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">False</span><span class="p">)]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 </pre></div>
 </div>
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}
-</pre></div>
 </div>
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Company Name</th>
-      <th>CIK URL</th>
-      <th>10K URL</th>
-      <th>Content</th>
-      <th>Structured</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>58</th>
-      <td>Signify Health</td>
-      <td>https://www.sec.gov/cgi-bin/browse-edgar?actio...</td>
-      <td>https://www.sec.gov/Archives/edgar/data/182818...</td>
-      <td>{'BASIS OF PRESENTATION': 'Basis of Presentati...</td>
-      <td>{'Business': 'Item 1. Business.
-<p>Overview</p>
-<p>Sig…</td>
-</tr>
-<tr>
-<th>109</th>
-<td>View, Inc.</td>
-<td><a class="reference external" href="https://www.sec.gov/cgi-bin/browse-edgar?actio">https://www.sec.gov/cgi-bin/browse-edgar?actio</a>…</td>
-<td><a class="reference external" href="https://www.sec.gov/Archives/edgar/data/181185">https://www.sec.gov/Archives/edgar/data/181185</a>…</td>
-<td>{‘Business’: ‘Item 1. Business
-Corporate Histo…</td>
-<td>{‘Business’: ‘Item 1. Business
-Corporate Histo…</td>
-</tr>
-<tr>
-<th>118</th>
-<td>R1 RCM</td>
-<td><a class="reference external" href="https://www.sec.gov/cgi-bin/browse-edgar?actio">https://www.sec.gov/cgi-bin/browse-edgar?actio</a>…</td>
-<td><a class="reference external" href="https://www.sec.gov/Archives/edgar/data/147259">https://www.sec.gov/Archives/edgar/data/147259</a>…</td>
-<td>{‘[Reserved]’: ‘Item 6. [Reserved]</p>
-<p>40</p>
-<p>Item …</td>
-<td>{‘Quantitative and Qualitative Disclosures Abo…</td>
-</tr>
-<tr>
-<th>180</th>
-<td>Keurig Dr Pepper Inc.</td>
-<td><a class="reference external" href="https://www.sec.gov/cgi-bin/browse-edgar?actio">https://www.sec.gov/cgi-bin/browse-edgar?actio</a>…</td>
-<td><a class="reference external" href="https://www.sec.gov/Archives/edgar/data/141813">https://www.sec.gov/Archives/edgar/data/141813</a>…</td>
-<td>{‘Business’: ‘ITEM 1.   BUSINESS
-OUR COMPANY
-K…</td>
-<td>{‘Business’: ‘ITEM 1.   BUSINESS
-OUR COMPANY
-K…</td>
-</tr>
-<tr>
-<th>210</th>
-<td>Oscar Health</td>
-<td><a class="reference external" href="https://www.sec.gov/cgi-bin/browse-edgar?actio">https://www.sec.gov/cgi-bin/browse-edgar?actio</a>…</td>
-<td><a class="reference external" href="https://www.sec.gov/Archives/edgar/data/156865">https://www.sec.gov/Archives/edgar/data/156865</a>…</td>
-<td>{‘Forward-Looking Statements’: ‘Table of Conte…</td>
-<td>{‘Business’: ‘Item 1. Business</p>
-<p>OUR BUSINESS</p>
-<p>…</td>
-</tr>
-<tr>
-<th>…</th>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-</tr>
-<tr>
-<th>3185</th>
-<td>Nurix Therapeutics</td>
-<td><a class="reference external" href="https://www.sec.gov/cgi-bin/browse-edgar?actio">https://www.sec.gov/cgi-bin/browse-edgar?actio</a>…</td>
-<td><a class="reference external" href="https://www.sec.gov/Archives/edgar/data/154959">https://www.sec.gov/Archives/edgar/data/154959</a>…</td>
-<td>{‘Business’: ‘Item 1. Business
-When used in th…</td>
-<td>{‘Business’: ‘Item 1. Business
-When used in th…</td>
-</tr>
-<tr>
-<th>3206</th>
-<td>RPX Corporation</td>
-<td><a class="reference external" href="https://www.sec.gov/cgi-bin/browse-edgar?actio">https://www.sec.gov/cgi-bin/browse-edgar?actio</a>…</td>
-<td><a class="reference external" href="https://www.sec.gov/Archives/edgar/data/150943">https://www.sec.gov/Archives/edgar/data/150943</a>…</td>
-<td>{‘Business’: ‘Item 1. Business.</p>
-<p>Overview
-RPX …</td>
-<td>{‘Business’: ‘Item 1. Business.</p>
-<p>Overview
-RPX …</td>
-</tr>
-<tr>
-<th>3247</th>
-<td>Synopsys Inc</td>
-<td><a class="reference external" href="https://www.sec.gov/cgi-bin/browse-edgar?actio">https://www.sec.gov/cgi-bin/browse-edgar?actio</a>…</td>
-<td><a class="reference external" href="https://www.sec.gov/Archives/edgar/data/883241">https://www.sec.gov/Archives/edgar/data/883241</a>…</td>
-<td>{‘Business’: ‘Item 1. Business
-Company and Seg…</td>
-<td>{‘Business’: ‘Item 1. Business
-Company and Seg…</td>
-</tr>
-<tr>
-<th>3286</th>
-<td>Prosper Marketplace</td>
-<td><a class="reference external" href="https://www.sec.gov/cgi-bin/browse-edgar?actio">https://www.sec.gov/cgi-bin/browse-edgar?actio</a>…</td>
-<td><a class="reference external" href="https://www.sec.gov/Archives/edgar/data/141626">https://www.sec.gov/Archives/edgar/data/141626</a>…</td>
-<td>{‘Business’: ‘ITEM 1.  BUSINESS
-Overview
-Our v…</td>
-<td>{‘Business’: ‘ITEM 1.  BUSINESS
-Overview
-Our v…</td>
-</tr>
-<tr>
-<th>3291</th>
-<td>Tenet Healthcare</td>
-<td><a class="reference external" href="https://www.sec.gov/cgi-bin/browse-edgar?actio">https://www.sec.gov/cgi-bin/browse-edgar?actio</a>…</td>
-<td><a class="reference external" href="https://www.sec.gov/Archives/edgar/data/70318/">https://www.sec.gov/Archives/edgar/data/70318/</a>…</td>
-<td>{‘Business’: ‘ITEM 1. BUSINESS
-OVERVIEW
-Tenet …</td>
-<td>{‘Business’: ‘ITEM 1. BUSINESS
-OVERVIEW
-Tenet …</td>
-</tr></p>
-  </tbody>
-</table>
-<p>84 rows × 5 columns</p>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Structured&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">False</span><span class="p">)]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;Business&#39;: &#39;&#39;,
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Business&#39;: &#39;&#39;,
  &#39;Risk Factors&#39;: &#39;&#39;,
  &#39;Cybersecurity&#39;: &#39;&#39;,
  &#39;Properties&#39;: &#39;&#39;,
@@ -1488,8 +1550,12 @@ Tenet …</td>
  &#39;Exhibits and Financial Statement Schedules&#39;: &#39;&#39;}
 </pre></div>
 </div>
+</div>
+</div>
 <p>Visualizing post-processing stats</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">all_titles</span> <span class="o">=</span> <span class="p">[</span><span class="n">title</span> <span class="k">for</span> <span class="n">document</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Structured&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span> <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">document</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_titles</span> <span class="o">=</span> <span class="p">[</span><span class="n">title</span> <span class="k">for</span> <span class="n">document</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Structured&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span> <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">document</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
 <span class="n">title_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">all_titles</span><span class="p">)</span>
 <span class="n">top_titles</span> <span class="o">=</span> <span class="n">title_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">total_documents</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Structured&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
@@ -1505,40 +1571,52 @@ Tenet …</td>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><img alt="png" src="10K%20Filing_files/10K%20Filing_60_0.png" /></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d63dac4f2381bde50f8e8c303404a5fb709c243311741b71f7a7fff6e6582df4.png" src="_images/d63dac4f2381bde50f8e8c303404a5fb709c243311741b71f7a7fff6e6582df4.png" />
+</div>
 </div>
 </section>
 </section>
 <section id="experimenting-with-llm">
 <h2>Experimenting with LLM<a class="headerlink" href="#experimenting-with-llm" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">meta_ai_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">MetaAI</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">meta_ai_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">MetaAI</span>
 <span class="n">ai</span> <span class="o">=</span> <span class="n">MetaAI</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">link</span> <span class="o">=</span> <span class="s1">&#39;https://www.sec.gov/Archives/edgar/data/778972/000143774914003821/fbmi20131231_10k.htm&#39;</span>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">link</span> <span class="o">=</span> <span class="s1">&#39;https://www.sec.gov/Archives/edgar/data/778972/000143774914003821/fbmi20131231_10k.htm&#39;</span>
 
 <span class="n">ai</span><span class="o">.</span><span class="n">prompt</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">link</span><span class="si">}</span><span class="s2"> Search the text of the 10-K filing for the &#39;Risk Factors&#39; item and provide its content; if not found, return &#39;None&#39;.&quot;</span><span class="p">)[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;Risk Factors\nThe risks and uncertainties described below are not the only ones we face. Additional risks and uncertainties not presently known to us or that we currently deem immaterial may also impair our business operations. If any of the following risks occur, our business, financial condition, and results of operations could be materially harmed.\nRisks Related to Our Business\nWe may not be able to sustain our revenue growth rate.\nWe may not be able to maintain our profitability.\nWe may not be able to compete effectively in the highly competitive markets in which we operate.\nWe may not be able to continue to develop and launch new and innovative products and services.\nWe may not be able to maintain our brand and reputation.\nWe may not be able to attract and retain skilled employees.\nWe may not be able to manage our growth effectively.\nWe may not be able to maintain our global operations effectively.\nWe may not be able to comply with increasingly complex and changing laws and regulations.\nWe may be subject to legal proceedings and regulatory actions.\nWe may not be able to maintain our intellectual property rights.\nWe may be subject to security breaches and cyber attacks.\nWe may not be able to manage our relationships with third-party vendors and suppliers.\nWe may not be able to maintain our information technology systems and infrastructure.\nWe may be subject to disruptions in the global economy and financial markets.\nWe may not be able to maintain our credit rating.\nWe may be subject to interest rate risks.\nWe may be subject to foreign exchange risks.\nWe may be subject to other risks related to our international operations.\nRisks Related to Our Financial Condition\nWe have a significant amount of debt and may not be able to meet our debt obligations.\nWe may not be able to generate sufficient cash to fund our operations and capital expenditures.\nWe may not be able to access the capital markets on favorable terms.\nWe may be subject to covenants and restrictions in our debt agreements.\nRisks Related to Our Industry\nWe operate in a highly competitive market and may not be able to compete effectively.\nWe may not be able to adapt to changes in the market for online and mobile advertising.\nWe may not be able to adapt to changes in the market for online and mobile commerce.\nWe may not be able to adapt to changes in the market for digital payments.\nWe may not be able to adapt to changes in the market for artificial intelligence and machine learning.\nPlease note that this is a summary of the Risk Factors section of the 10-K filing and is not intended to be a comprehensive or exhaustive list of all the risks and uncertainties facing Facebook, Inc. (now known as Meta Platforms, Inc.).\n&#39;
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Risk Factors\nThe risks and uncertainties described below are not the only ones we face. Additional risks and uncertainties not presently known to us or that we currently deem immaterial may also impair our business operations. If any of the following risks occur, our business, financial condition, and results of operations could be materially harmed.\nRisks Related to Our Business\nWe may not be able to sustain our revenue growth rate.\nWe may not be able to maintain our profitability.\nWe may not be able to compete effectively in the highly competitive markets in which we operate.\nWe may not be able to continue to develop and launch new and innovative products and services.\nWe may not be able to maintain our brand and reputation.\nWe may not be able to attract and retain skilled employees.\nWe may not be able to manage our growth effectively.\nWe may not be able to maintain our global operations effectively.\nWe may not be able to comply with increasingly complex and changing laws and regulations.\nWe may be subject to legal proceedings and regulatory actions.\nWe may not be able to maintain our intellectual property rights.\nWe may be subject to security breaches and cyber attacks.\nWe may not be able to manage our relationships with third-party vendors and suppliers.\nWe may not be able to maintain our information technology systems and infrastructure.\nWe may be subject to disruptions in the global economy and financial markets.\nWe may not be able to maintain our credit rating.\nWe may be subject to interest rate risks.\nWe may be subject to foreign exchange risks.\nWe may be subject to other risks related to our international operations.\nRisks Related to Our Financial Condition\nWe have a significant amount of debt and may not be able to meet our debt obligations.\nWe may not be able to generate sufficient cash to fund our operations and capital expenditures.\nWe may not be able to access the capital markets on favorable terms.\nWe may be subject to covenants and restrictions in our debt agreements.\nRisks Related to Our Industry\nWe operate in a highly competitive market and may not be able to compete effectively.\nWe may not be able to adapt to changes in the market for online and mobile advertising.\nWe may not be able to adapt to changes in the market for online and mobile commerce.\nWe may not be able to adapt to changes in the market for digital payments.\nWe may not be able to adapt to changes in the market for artificial intelligence and machine learning.\nPlease note that this is a summary of the Risk Factors section of the 10-K filing and is not intended to be a comprehensive or exhaustive list of all the risks and uncertainties facing Facebook, Inc. (now known as Meta Platforms, Inc.).\n&#39;
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test_result</span> <span class="o">=</span> <span class="p">{}</span>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_result</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">section</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">essential_sections</span><span class="p">):</span>
     <span class="n">content</span> <span class="o">=</span> <span class="n">ai</span><span class="o">.</span><span class="n">prompt</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">link</span><span class="si">}</span><span class="s2"> Search the text of the 10-K filing for the &#39;</span><span class="si">{</span><span class="n">section</span><span class="si">}</span><span class="s2">&#39; item and provide its content; if not found, return &#39;None&#39;.&quot;</span><span class="p">)[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
     <span class="n">test_result</span><span class="p">[</span><span class="n">section</span><span class="p">]</span> <span class="o">=</span> <span class="n">content</span>
 <span class="n">test_result</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>100%|██████████| 20/20 [05:14&lt;00:00, 15.73s/it]
-
-
-
-
-
-{&#39;Business&#39;: &quot;The &#39;Business&#39; item from the 10-K filing is:\nItem 1. Business.\nMeta Platforms, Inc., (“Facebook” or the “Company”) is a technology company that is headquartered in Menlo Park, California. We are a global community of people who use Facebook, Instagram, WhatsApp, or each of their respective family of products. Our products empower people to connect, share, discover, and communicate with each other on mobile devices and personal computers. We have the following reportable segments:\nAdvertising (Facebook and Instagram)\nPayment Processing Fees (Facebook and WhatsApp)\nConsumer Hardware (Oculus)\nOther (Oculus and other products)\nWe had 2.50 billion monthly active users (MAUs) as of December 31, 2013.\nNone of the information contained in this filing constitutes an offer to sell or a solicitation of an offer to buy any securities of the Company.\nLet me know if you need any further assistance!\n&quot;,
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 20/20 [05:14&lt;00:00, 15.73s/it]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Business&#39;: &quot;The &#39;Business&#39; item from the 10-K filing is:\nItem 1. Business.\nMeta Platforms, Inc., (“Facebook” or the “Company”) is a technology company that is headquartered in Menlo Park, California. We are a global community of people who use Facebook, Instagram, WhatsApp, or each of their respective family of products. Our products empower people to connect, share, discover, and communicate with each other on mobile devices and personal computers. We have the following reportable segments:\nAdvertising (Facebook and Instagram)\nPayment Processing Fees (Facebook and WhatsApp)\nConsumer Hardware (Oculus)\nOther (Oculus and other products)\nWe had 2.50 billion monthly active users (MAUs) as of December 31, 2013.\nNone of the information contained in this filing constitutes an offer to sell or a solicitation of an offer to buy any securities of the Company.\nLet me know if you need any further assistance!\n&quot;,
  &#39;Risk Factors&#39;: &quot;Risk Factors\nThe following are some of the key factors that could affect our business, financial condition, and results of operations:\nGeneral Economic and Industry Conditions: Economic downturns, industry downturns, or changes in market conditions could hurt our business.\nCompetition: We face intense competition in the market, which could hurt our business.\nRegulatory Risks: Changes in laws, regulations, or policies could hurt our business.\nUser Engagement: If our users lose interest in our platform, our business could suffer.\nData Privacy and Security: If we fail to protect our users&#39; data, our business could suffer.\nDependence on Key Personnel: Our business is dependent on our key personnel, and the loss of any of them could hurt our business.\nIntellectual Property Risks: If we are unable to protect our intellectual property, our business could suffer.\nLitigation Risks: We are subject to various legal proceedings, which could hurt our business.\nGlobal Expansion Risks: Our international expansion may not be successful.\nCurrency Fluctuations: Changes in currency exchange rates could hurt our business.\nDependence on Third-Party Services: We rely on third-party services, and if they are not available, our business could suffer.\nPlease note that these are just some of the risk factors, and the actual filing may contain additional or different risks.\n&quot;,
  &#39;Quantitative and Qualitative Disclosures About Market Risk&#39;: &#39;Quantitative and Qualitative Disclosures About Market Risk\nThe following information is from Item 7A of the 10-K filing:\nMarket Risk\nWe are exposed to market risk related to changes in interest rates, foreign currency exchange rates, and equity and commodity prices.\nInterest Rate Risk\nOur exposure to interest rate risk relates primarily to our investment portfolio. We manage our exposure to interest rate risk through our investment strategy and by maintaining a diversified investment portfolio.\nForeign Currency Exchange Risk\nWe have international operations and are exposed to foreign currency exchange risk related to changes in exchange rates between the U.S. dollar and other currencies. We manage our exposure to foreign currency exchange risk through our hedging strategy.\nEquity Price Risk\nOur exposure to equity price risk relates primarily to our investments in privately held companies. We manage our exposure to equity price risk through our investment strategy and by maintaining a diversified investment portfolio.\nCommodity Price Risk\nWe are not directly exposed to commodity price risk, as we do not engage in commodity-based transactions.\nPlease note that this is a summary of the relevant section and not the full content of the 10-K filing.\n&#39;,
  &#39;Properties&#39;: &#39;Properties\nWe lease our principal properties, including our headquarters, in Menlo Park, California. We also lease properties in various other locations in the United States and abroad for our engineering teams, data centers, and offices for our sales and operations teams.\nAs of December 31, 2013, we had:\n1.08 million square feet of leased space in Menlo Park, California, which primarily supports our headquarters and engineering teams;\n431,000 square feet of leased space in New York City, New York, which primarily supports our sales and operations teams;\n342,000 square feet of leased space in Seattle, Washington, which primarily supports our engineering teams;\n275,000 square feet of leased space in San Francisco, California, which primarily supports our engineering teams;\n236,000 square feet of leased space in Los Angeles, California, which primarily supports our sales and operations teams;\n174,000 square feet of leased space in London, United Kingdom, which primarily supports our sales and operations teams;\n163,000 square feet of leased space in Dublin, Ireland, which primarily supports our sales and operations teams;\n135,000 square feet of leased space in Palo Alto, California, which primarily supports our engineering teams;\n103,000 square feet of leased space in Austin, Texas, which primarily supports our sales and operations teams; and\n85,000 square feet of leased space in Tel Aviv, Israel, which primarily supports our engineering teams.\nWe believe our facilities are sufficient for our current needs and do not anticipate any difficulties in obtaining additional space as needed.\n&#39;,
@@ -1560,8 +1638,12 @@ Tenet …</td>
  &#39;Exhibits and Financial Statement Schedules&#39;: &quot;Here is the content of the &#39;Exhibits and Financial Statement Schedules&#39; item from the 10-K filing:\nExhibits and Financial Statement Schedules\n(a) Exhibits\nExhibit 2.1: Agreement and Plan of Merger, dated as of July 1, 2012, by and among Facebook, Inc., Facebook Merger Sub, Inc., Instagram, Inc., and Shareholders’ Representative (incorporated by reference to Exhibit 2.1 to Facebook’s Current Report on Form 8-K filed on April 23, 2012)\nExhibit 3.1: Amended and Restated Certificate of Incorporation of Facebook, Inc. (incorporated by reference to Exhibit 3.1 to Facebook’s Quarterly Report on Form 10-Q filed on July 31, 2013)\nExhibit 3.2: Amended and Restated Bylaws of Facebook, Inc. (incorporated by reference to Exhibit 3.2 to Facebook’s Quarterly Report on Form 10-Q filed on July 31, 2013)\nExhibit 4.1: Form of Common Stock Certificate (incorporated by reference to Exhibit 4.1 to Facebook’s Registration Statement on Form S-1 filed on February 1, 2012)\nExhibit 10.2: 2012 Director Stock Plan (incorporated by reference to Exhibit 10.2 to Facebook’s Registration Statement on Form S-1 filed on February 1, 2012)\nExhibit 10.3: 2012 Director Stock Plan, Form of Stock Option Agreement (incorporated by reference to Exhibit 10.3 to Facebook’s Registration Statement on Form S-1 filed on February 1, 2012)\nExhibit 10.4: 2012 Director Stock Plan, Form of Restricted Stock Unit Agreement (incorporated by reference to Exhibit 10.4 to Facebook’s Registration Statement on Form S-1 filed on February 1, 2012)\nExhibit 10.5: Facebook, Inc. 2013 Compensation and Talent Acquisition Plan (incorporated by reference to Exhibit 10.5 to Facebook’s Quarterly Report on Form 10-Q filed on July 31, 2013)\nExhibit 10.6: Facebook, Inc. 2013 Equity Incentive Plan (incorporated by reference to Exhibit 10.6 to Facebook’s Quarterly Report on Form 10-Q filed on July 31, 2013)\nExhibit 10.7: Facebook, Inc. 2013 Equity Incentive Plan, Form of Stock Option Agreement (incorporated by reference to Exhibit 10.7 to Facebook’s Quarterly Report on Form 10-Q filed on July 31, 2013)\nExhibit 10.8: Facebook, Inc. 2013 Equity Incentive Plan, Form of Restricted Stock Unit Agreement (incorporated by reference to Exhibit 10.8 to Facebook’s Quarterly Report on Form 10-Q filed on July 31, 2013)\nExhibit 21.1: Subsidiaries of Facebook, Inc.\nExhibit 23.1: Consent of Ernst &amp; Young LLP, Independent Registered Public Accounting Firm\nExhibit 31.1: Certification of Chief Executive Officer pursuant to Rule 13a-14(a) or Rule 15d-14(a) under the Securities Exchange Act of 1934\nExhibit 31.2: Certification of Chief Financial Officer pursuant to Rule 13a-14(a) or Rule 15d-14(a) under the Securities Exchange Act of 1934\nExhibit 32.1: Certification of Chief Executive Officer pursuant to Rule 13a-14(b) or Rule 15d-14(b) under the Securities Exchange Act of 1934 and 18 U.S.C. Section 1350\nExhibit 32.2: Certification of Chief Financial Officer pursuant to Rule 13a-14(b) or Rule 15d-14(b) under the Securities Exchange Act of 1934 and 18 U.S.C. Section 1350\nExhibit 101.INS: XBRL Instance Document\nExhibit 101.SCH: XBRL Taxonomy Extension Schema Document\nExhibit 101.CAL: XBRL Taxonomy Extension Calculation Linkbase Document\nExhibit 101.LAB: XBRL Taxonomy Extension Label Linkbase Document\nExhibit 101.PRE: XBRL Taxonomy Extension Presentation Linkbase Document\nExhibit 101.DEF: XBRL Taxonomy Extension Definition Linkbase Document\n(b) Financial Statement Schedules\nSchedule II: Valuation and Qualifying Accounts\nSchedule III: Real Estate Investments\nLet me know if you have any further requests!\n&quot;}
 </pre></div>
 </div>
+</div>
+</div>
 <p>Testing message generation with <a class="reference external" href="http://Meta.ai">Meta.ai</a> API</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ai</span><span class="o">.</span><span class="n">prompt</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ai</span><span class="o">.</span><span class="n">prompt</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">Use the the most prominent aspect of the below a reciever&#39;s information to generate a short first line that includes a greeting and affirmation/congratulation/compliment of their experience to be used for an intial linkedin personalized cold outreach message that hooks their attention, reply as if you are sending me that message, so only return the sentence itself and nothing else:</span>
 
 <span class="s2">ITEM 1. BUSINESS</span>
@@ -1578,26 +1660,40 @@ Tenet …</td>
 <span class="s2">&quot;&quot;&quot;</span><span class="p">)[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;Hi, I wanted to reach out and congratulate you on the impressive merger with General Mills, Inc. - quite an achievement!\n&#39;
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Hi, I wanted to reach out and congratulate you on the impressive merger with General Mills, Inc. - quite an achievement!\n&#39;
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ai</span><span class="o">.</span><span class="n">prompt</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ai</span><span class="o">.</span><span class="n">prompt</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">https://www.sec.gov/Archives/edgar/data/1694426/000169442624000028/dk-20231231.htm#i6fa8754773d643bcbfbf1e33d05e1689_265</span>
 <span class="s2">Read the above 10-K filing link, if there isn&#39;t a item called &#39;MARKET FOR REGISTRANT&#39;S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES&#39;, return &#39;None&quot; and nothing else; if there is, provide the above link&#39;s content of item &#39;MARKET FOR REGISTRANT&#39;S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES&#39;.</span>
 <span class="s2">&quot;&quot;&quot;</span><span class="p">)[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;MARKET FOR REGISTRANT\&#39;S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES\nAs of December 31, 2023, the Company\&#39;s common stock is listed on the New York Stock Exchange (NYSE) under the ticker symbol &quot;DK&quot;.\nThe following table sets forth the high and low sales prices for the Company\&#39;s common stock as reported on the NYSE for the periods indicated:\nQuarterHighLowFirst Quarter 2023$63.95$45.06Second Quarter 2023$73.94$56.12Third Quarter 2023$81.11$65.23Fourth Quarter 2023$95.00$74.51\nAs of December 31, 2023, there were approximately 342 holders of record of the Company\&#39;s common stock.\nThe Company did not repurchase any shares of its common stock during the year ended December 31, 2023.\nThe Company\&#39;s board of directors has authorized a total of $10.0 billion for share repurchases under its share repurchase program, of which $5.3 billion remained available as of December 31, 2023.\n&#39;
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;MARKET FOR REGISTRANT\&#39;S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES\nAs of December 31, 2023, the Company\&#39;s common stock is listed on the New York Stock Exchange (NYSE) under the ticker symbol &quot;DK&quot;.\nThe following table sets forth the high and low sales prices for the Company\&#39;s common stock as reported on the NYSE for the periods indicated:\nQuarterHighLowFirst Quarter 2023$63.95$45.06Second Quarter 2023$73.94$56.12Third Quarter 2023$81.11$65.23Fourth Quarter 2023$95.00$74.51\nAs of December 31, 2023, there were approximately 342 holders of record of the Company\&#39;s common stock.\nThe Company did not repurchase any shares of its common stock during the year ended December 31, 2023.\nThe Company\&#39;s board of directors has authorized a total of $10.0 billion for share repurchases under its share repurchase program, of which $5.3 billion remained available as of December 31, 2023.\n&#39;
 </pre></div>
 </div>
+</div>
+</div>
 <p>Packaged Function</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_10k</span><span class="p">(</span><span class="n">company_name</span><span class="p">):</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_10k</span><span class="p">(</span><span class="n">company_name</span><span class="p">):</span>
     <span class="n">cik_url</span> <span class="o">=</span> <span class="n">get_cik_url</span><span class="p">(</span><span class="n">company_name</span><span class="p">)</span>
     <span class="n">html_url</span> <span class="o">=</span> <span class="n">get_10k_url</span><span class="p">(</span><span class="n">cik_url</span><span class="p">)</span>
     <span class="n">html_content</span> <span class="o">=</span> <span class="n">get_10k_file</span><span class="p">(</span><span class="n">html_url</span><span class="p">)</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">extract_sections</span><span class="p">(</span><span class="n">html_content</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">result</span>
 </pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -1638,15 +1734,15 @@ Tenet …</td>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Welcome to your Jupyter Book</p>
+        <p class="prev-next-title">Welcome to my Project Collection</p>
       </div>
     </a>
     <a class="right-next"
-       href="etl-for-llm-sales-messaging_nob.html"
+       href="codeswitching-corpus-mining_nob.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">ETL for AI-Powered Messaging</p>
+        <p class="prev-next-title">N-grams Pattern-mining in Menus</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1671,7 +1767,6 @@ Tenet …</td>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-architecture">Pipeline Architecture</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-walkthrough">Pipeline Walkthrough</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-functionality">1. Search Functionality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parse-functionality">2. Parse Functionality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">3. Evaluation</a><ul class="nav section-nav flex-column">
