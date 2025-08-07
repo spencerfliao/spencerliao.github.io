@@ -1,7 +1,7 @@
 
-# Scalable Data ETL for AI-Powered Messaging
+# ETL for AI-Powered Messaging
 
-> *This repository presents a redacted, simulated version of a capstone project developed under NDA with a Canadian AI company. It illustrates generalizable techniques in ETL, information extraction, and preparation for LLM message generation workflows.*
+> This repository presents a redacted, simulated version of a capstone project developed under NDA with a Canadian AI company. It illustrates generalizable techniques in ETL, information extraction, and preparation for LLM message generation workflows.
 
 
 
