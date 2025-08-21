@@ -26,8 +26,8 @@ You can explore the full source code and documentation on my [GitHub repository]
 
 ### **Other**
 
-* **Brand Linguistic Insights & Research:**
+* **[Brand Linguistic Insights & Research](https://spencerfliao.github.io/brand.html):**
   A selection of anonymized deliverables from my time at Labbrand, where I conducted multilingual brand naming evaluations across markets.
 
-* **Design Training & Portfolio:**
+* **[Design Training & Portfolio](https://spencerfliao.github.io/design.html):**
   Selected projects from my Rhode Island School of Design training, showcasing skills in visual sensibilities, storytelling, and cross-disciplinary collaboration.
